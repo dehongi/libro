@@ -59,11 +59,11 @@ class GenreForm(forms.ModelForm):
 class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
-        fields = ["name", "biography", "date_of_birth", "date_of_death", "photo"]
+        fields = ["name", "biography", "birth_date", "death_date", "photo"]
         widgets = {
             "name": forms.TextInput(attrs={"class": "form-control"}),
             "biography": forms.Textarea(attrs={"class": "form-control"}),
-            "date_of_birth": forms.DateInput(attrs={"class": "form-control"}),
-            "date_of_death": forms.DateInput(attrs={"class": "form-control"}),
+            "birth_date": forms.DateInput(attrs={"class": "form-control"}),
+            "death_date": forms.DateInput(attrs={"class": "form-control"}),
             "photo": forms.ClearableFileInput(attrs={"class": "form-control"}),
         }

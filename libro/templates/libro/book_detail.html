@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" class="img-fluid" alt="{{ book.title }}">
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <h1>{{ book.title }}</h1>
+        <h3>{% translate "by" %} {{ book.author.name }}</h3>
+        <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+        <p><strong>{% translate "Publication Date:" %}</strong> {{ book.publication_date }}</p>
+        <p><strong>{% translate "Average Rating:" %}</strong> {{ book.average_rating|floatformat:1 }}/5.0</p>
+        <p>{{ book.description }}</p>
+        
+        <div class="mt-3">
+            <a href="{% url 'libro:book-update' book.pk %}" class="btn btn-primary">{% translate "Edit" %}</a>
+            <a href="{% url 'libro:book-delete' book.pk %}" class="btn btn-danger">{% translate "Delete" %}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

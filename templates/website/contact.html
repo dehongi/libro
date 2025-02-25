@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">{{ title }}</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Get in Touch</h5>
+                    <p class="card-text">We'd love to hear from you. Send us a message!</p>
+                    
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-envelope"></i> Email: contact@libro.com
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-telephone"></i> Phone: +1 (555) 123-4567
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-geo-alt"></i> Address: 123 Book Street, Reading City
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

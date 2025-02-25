@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary">{% translate 'Save' %}</button>
+    <a href="{% url 'libro:book-list' %}" class="btn btn-secondary">{% translate 'Cancel' %}</a>
+  </form>
+{% endblock %}

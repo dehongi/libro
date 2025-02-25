@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{% translate "Delete Book" %}</h1>
+<p>{% translate "Are you sure you want to delete" %} "{{ book.title }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">{% translate "Yes, delete" %}</button>
+    <a href="{% url 'libro:book-detail' book.pk %}" class="btn btn-secondary">{% translate "Cancel" %}</a>
+</form>
+{% endblock %}

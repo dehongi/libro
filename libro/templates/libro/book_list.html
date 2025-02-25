@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% translate 'Books' %}</h1>
+  <a href="{% url 'libro:book-create' %}" class="btn btn-primary">{% translate 'Add Book' %}</a>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+    {% for book in books %}
+      <div class="col">
+        <div class="card h-100">
+          {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}" />
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ book.author.name }}</h6>
+            <p class="card-text">{{ book.description|truncatewords:30 }}</p>
+            <a href="{% url 'libro:book-detail' book.pk %}" class="btn btn-primary">{% translate 'View Details' %}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% include 'pagination.html' %}
+{% endblock %}
