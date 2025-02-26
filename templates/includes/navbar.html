@@ -5,7 +5,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'libro:book-list' %}">Books</a>
+          <a class="nav-link" href="{% url 'libro:home' %}">Books</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'website:about' %}">About</a>
@@ -20,7 +20,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i> {{ user.username }}</a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li>
-                <a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a>
+                <a class="dropdown-item" href="#">Profile</a>
               </li>
               <li>
                 <hr class="dropdown-divider" />

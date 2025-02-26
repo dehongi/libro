@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+  Books and Authors
+{% endblock %}
+
+{% block content %}
+  <div class="px-4 py-5 my-5 text-center bg-light">
+    <!-- Added bg-light for better contrast -->
+    <h1 class="display-3 fw-bold text-body-emphasis mb-3">{{ title }}</h1> <!-- Increased font size -->
+    <p class="lead text-body-secondary mb-4">Discover your next great read with Libro – your digital companion for exploring books, sharing reviews, and connecting with fellow readers.</p>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="{% url 'libro:book-list' %}" class="btn btn-primary btn-lg w-100 rounded-pill"><i class="bi bi-book me-2"></i>Browse Books</a>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <a href="{% url 'signup' %}" class="btn btn-outline-secondary btn-lg w-100 rounded-pill"><i class="bi bi-person-plus me-2"></i>Join Now</a>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12 text-center">
+        <img src="{% static 'images/libro_homepage.jpg' %}" alt="Libro homepage image" class="img-fluid rounded" style="max-width:800px" />
+      </div>
+    </div>
+  </div>
+{% endblock %}

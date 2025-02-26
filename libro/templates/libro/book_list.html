@@ -4,7 +4,7 @@
 
 {% block content %}
   <h1>{% translate 'Books' %}</h1>
-  <a href="{% url 'libro:book-create' %}" class="btn btn-primary">{% translate 'Add Book' %}</a>
+  <a href="{% url 'libro:author-list' %}" class="btn btn-primary">{% translate 'Add Book from an Author' %}</a>
 
   <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
     {% for book in books %}

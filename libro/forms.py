@@ -18,7 +18,7 @@ class BookForm(forms.ModelForm):
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
             "author": forms.Select(attrs={"class": "form-control"}),
-            "genres": forms.CheckboxSelectMultiple,
+            "genres": forms.CheckboxSelectMultiple(),
             "description": forms.Textarea(attrs={"class": "form-control"}),
             "cover_image": forms.ClearableFileInput(attrs={"class": "form-control"}),
             "isbn": forms.TextInput(attrs={"class": "form-control"}),

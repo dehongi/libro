@@ -5,6 +5,7 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
+    TemplateView,
 )
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -70,6 +71,19 @@ class AuthorDeleteView(LoginRequiredMixin, DeleteView):
     context_object_name = "author"
 
 
+class AuthorBookListView(ListView):
+    """Display a list of books written by an author."""
+
+    model = Book
+    template_name = "libro/author_book_list.html"
+    context_object_name = "books"
+    paginate_by = 10
+
+    def get_queryset(self):
+        author = Author.objects.get(slug=self.kwargs["author_slug"])
+        return Book.objects.filter(author=author)
+
+
 class BookListView(ListView):
     """Display a list of all books."""
 
@@ -124,3 +138,7 @@ class BookDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "libro/book_confirm_delete.html"
     success_url = reverse_lazy("libro:book-list")
     context_object_name = "book"
+
+
+class LibroHome(TemplateView):
+    template_name = "libro/home.html"

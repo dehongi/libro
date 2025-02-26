@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-  <h1>{{ title }}</h1>
-  <form method="post" enctype="multipart/form-data">
+  <h1 class="my-5">{{ title }}</h1>
+  <form class="my-5" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form }}
     <button type="submit" class="btn btn-primary">{% translate 'Save' %}</button>

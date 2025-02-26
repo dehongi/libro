@@ -10,19 +10,45 @@ from .views import (
     BookCreateView,
     BookUpdateView,
     BookDeleteView,
+    AuthorBookListView,
+    LibroHome,
 )
 
 app_name = "libro"
 
 urlpatterns = [
+    path("", LibroHome.as_view(), name="home"),
     path("authors/", AuthorListView.as_view(), name="author-list"),
-    path("authors/<int:pk>/", AuthorDetailView.as_view(), name="author-detail"),
     path("authors/add/", AuthorCreateView.as_view(), name="author-create"),
-    path("authors/<int:pk>/edit/", AuthorUpdateView.as_view(), name="author-update"),
-    path("authors/<int:pk>/delete/", AuthorDeleteView.as_view(), name="author-delete"),
+    path("authors/<slug:slug>/", AuthorDetailView.as_view(), name="author-detail"),
+    path("authors/<slug:slug>/edit/", AuthorUpdateView.as_view(), name="author-update"),
+    path(
+        "authors/<slug:slug>/delete/", AuthorDeleteView.as_view(), name="author-delete"
+    ),
+    path(
+        "authors/<slug:author_slug>/books/",
+        AuthorBookListView.as_view(),
+        name="author-books",
+    ),
     path("books/", BookListView.as_view(), name="book-list"),
-    path("books/<int:pk>/", BookDetailView.as_view(), name="book-detail"),
-    path("books/add/", BookCreateView.as_view(), name="book-create"),
-    path("books/<int:pk>/edit/", BookUpdateView.as_view(), name="book-update"),
-    path("books/<int:pk>/delete/", BookDeleteView.as_view(), name="book-delete"),
+    path(
+        "authors/<slug:author_pk>/books/<slug:slug>/",
+        BookDetailView.as_view(),
+        name="book-detail",
+    ),
+    path(
+        "authors/<slug:author_slug>/books/add/",
+        BookCreateView.as_view(),
+        name="book-create",
+    ),
+    path(
+        "authors/<slug:author_slug>/books/<slug:slug>/edit/",
+        BookUpdateView.as_view(),
+        name="book-update",
+    ),
+    path(
+        "authors/<slug:author_slug>/books/<slug:slug>/delete/",
+        BookDeleteView.as_view(),
+        name="book-delete",
+    ),
 ]

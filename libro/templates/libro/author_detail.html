@@ -1,15 +1,15 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ author.name }}</h1>
-<div>
+  <h1>{{ author.name }}</h1>
+  <div>
     {% if author.photo %}
-        <img src="{{ author.photo.url }}" alt="{{ author.name }}">
+      <img src="{{ author.photo.url }}" alt="{{ author.name }}" />
     {% endif %}
     <p>{{ author.biography }}</p>
-    <p>Birth date: {{ author.birth_date|default:"Unknown" }}</p>
-    <p>Death date: {{ author.death_date|default:"" }}</p>
-</div>
-<a href="{% url 'author-update' author.pk %}" class="btn btn-primary">Edit</a>
-<a href="{% url 'author-delete' author.pk %}" class="btn btn-danger">Delete</a>
+    <p>Birth date: {{ author.birth_date|default:'Unknown' }}</p>
+    <p>Death date: {{ author.death_date|default:'' }}</p>
+  </div>
+  <a href="{% url 'libro:author-update' author.slug %}" class="btn btn-primary">Edit</a>
+  <a href="{% url 'libro:author-delete' author.slug %}" class="btn btn-danger">Delete</a>
 {% endblock %}

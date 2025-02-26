@@ -1,13 +1,16 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.text import slugify
 
 
 class Author(models.Model):
     """Model representing a book author."""
 
-    name = models.CharField(_("name"), max_length=255)
+    name = models.CharField(_("name"), max_length=55)
+    slug = models.SlugField(_("slug"), max_length=55, unique=True)
     biography = models.TextField(_("biography"), blank=True)
     birth_date = models.DateField(_("birth date"), null=True, blank=True)
     death_date = models.DateField(_("death date"), null=True, blank=True)
@@ -22,6 +25,26 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("libro:author-detail", kwargs={"slug": self.slug})
+
+    @property
+    def book_count(self):
+        return self.books.count()
+
+    # Create a unique slug for each author
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.name)
+            slug = base_slug
+            n = 1
+            while Author.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{n}"
+                n += 1
+            self.slug = slug
+
+        return super().save(*args, **kwargs)
 
 
 class Genre(models.Model):
@@ -41,7 +64,8 @@ class Genre(models.Model):
 class Book(models.Model):
     """Model representing a book."""
 
-    title = models.CharField(_("title"), max_length=255)
+    title = models.CharField(_("title"), max_length=200)
+    slug = models.SlugField(_("slug"), max_length=205, unique=True)
     author = models.ForeignKey(
         Author, on_delete=models.CASCADE, related_name="books", verbose_name=_("author")
     )
@@ -66,6 +90,22 @@ class Book(models.Model):
     @property
     def average_rating(self):
         return self.reviews.aggregate(models.Avg("rating"))["rating__avg"] or 0
+
+    def get_absolute_url(self):
+        return reverse("libro:book-detail", kwargs={"slug": self.slug})
+
+    # Create a unique slug for each book
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.title)
+            slug = base_slug
+            n = 1
+            while Book.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{n}"
+                n += 1
+            self.slug = slug
+
+        return super().save(*args, **kwargs)
 
 
 class Review(models.Model):
