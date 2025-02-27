@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import (
     ListView,
     DetailView,
@@ -10,9 +10,14 @@ from django.views.generic import (
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.core.exceptions import ValidationError
 
-from .models import Author, Book
-from .forms import AuthorForm, BookForm
+from .models import Author, Book, Review, Comment
+from .forms import AuthorForm, BookForm, ReviewForm, CommentForm
 
 
 class AuthorListView(ListView):
@@ -39,6 +44,10 @@ class AuthorCreateView(LoginRequiredMixin, CreateView):
     template_name = "libro/author_form.html"
     form_class = AuthorForm
     success_url = reverse_lazy("libro:author-list")
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -109,6 +118,15 @@ class BookCreateView(LoginRequiredMixin, CreateView):
     template_name = "libro/book_form.html"
     success_url = reverse_lazy("libro:book-list")
 
+    def dispatch(self, request, *args, **kwargs):
+        self.author = get_object_or_404(Author, slug=self.kwargs["author_slug"])
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.author = self.author
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Add Book")
@@ -151,3 +169,105 @@ class LibroHome(TemplateView):
         context["latest_books"] = Book.objects.all().order_by("-created_at")[:6]
         context["featured_authors"] = Author.objects.all().order_by("?")[:3]
         return context
+
+
+@login_required
+@require_POST
+def add_review(request, book_slug):
+    """Add a review to a book."""
+    book = get_object_or_404(Book, slug=book_slug)
+    form = ReviewForm(request.POST)
+
+    try:
+        # Check if user has already reviewed this book
+        if Review.objects.filter(book=book, user=request.user).exists():
+            messages.error(request, _("You have already reviewed this book."))
+            return redirect("libro:book-detail", book_slug=book_slug)
+
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.book = book
+            review.user = request.user
+            review.save()
+            messages.success(request, _("Your review has been added successfully."))
+        else:
+            messages.error(request, _("Please correct the errors below."))
+    except ValidationError as e:
+        messages.error(request, str(e))
+
+    return redirect("libro:book-detail", book_slug=book_slug)
+
+
+@login_required
+@require_POST
+def edit_review(request, review_id):
+    """Edit an existing review."""
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    form = ReviewForm(request.POST, instance=review)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request, _("Your review has been updated successfully."))
+    else:
+        messages.error(request, _("Please correct the errors below."))
+
+    return redirect("libro:book-detail", book_slug=review.book.slug)
+
+
+@login_required
+@require_POST
+def delete_review(request, review_id):
+    """Delete a review."""
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    book_slug = review.book.slug
+    review.delete()
+    messages.success(request, _("Your review has been deleted successfully."))
+    return redirect("libro:book-detail", book_slug=book_slug)
+
+
+@login_required
+@require_POST
+def add_comment(request, review_id):
+    """Add a comment to a review."""
+    review = get_object_or_404(Review, id=review_id)
+    form = CommentForm(request.POST)
+
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.review = review
+        comment.user = request.user
+        comment.save()
+
+        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+            # Return JSON response for AJAX requests
+            return JsonResponse(
+                {
+                    "status": "success",
+                    "comment": {
+                        "content": comment.content,
+                        "user": comment.user.username,
+                        "created_at": comment.created_at.strftime("%B %d, %Y"),
+                    },
+                }
+            )
+
+        messages.success(request, _("Your comment has been added successfully."))
+    else:
+        messages.error(request, _("Please enter a valid comment."))
+
+    return redirect("libro:book-detail", book_slug=review.book.slug)
+
+
+@login_required
+@require_POST
+def delete_comment(request, comment_id):
+    """Delete a comment."""
+    comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+    book_slug = comment.review.book.slug
+    comment.delete()
+
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        return JsonResponse({"status": "success"})
+
+    messages.success(request, _("Your comment has been deleted successfully."))
+    return redirect("libro:book-detail", book_slug=book_slug)

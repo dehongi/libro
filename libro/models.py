@@ -5,6 +5,8 @@ from django.utils.translation import gettext_lazy as _
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 
+User = settings.AUTH_USER_MODEL
+
 
 class Author(models.Model):
     """Model representing a book author."""
@@ -17,6 +19,7 @@ class Author(models.Model):
     photo = models.ImageField(_("photo"), upload_to="author_photos/", blank=True)
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("author")
@@ -78,6 +81,7 @@ class Book(models.Model):
     publication_date = models.DateField(_("publication date"))
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("book")
@@ -112,9 +116,7 @@ class Review(models.Model):
     """Model representing a book review."""
 
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="reviews")
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reviews"
-    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reviews")
     rating = models.IntegerField(
         _("rating"), validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
@@ -139,9 +141,7 @@ class Comment(models.Model):
     review = models.ForeignKey(
         Review, on_delete=models.CASCADE, related_name="comments"
     )
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="comments"
-    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
     content = models.TextField(_("content"))
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)

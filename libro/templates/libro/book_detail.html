@@ -1,25 +1,207 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-4">
-        {% if book.cover_image %}
-            <img src="{{ book.cover_image.url }}" class="img-fluid" alt="{{ book.title }}">
-        {% endif %}
-    </div>
-    <div class="col-md-8">
-        <h1>{{ book.title }}</h1>
-        <h3>{% translate "by" %} {{ book.author.name }}</h3>
-        <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-        <p><strong>{% translate "Publication Date:" %}</strong> {{ book.publication_date }}</p>
-        <p><strong>{% translate "Average Rating:" %}</strong> {{ book.average_rating|floatformat:1 }}/5.0</p>
-        <p>{{ book.description }}</p>
-        
-        <div class="mt-3">
-            <a href="{% url 'libro:book-update' book.pk %}" class="btn btn-primary">{% translate "Edit" %}</a>
-            <a href="{% url 'libro:book-delete' book.pk %}" class="btn btn-danger">{% translate "Delete" %}</a>
+  <div class="container py-4">
+    <div class="row g-4">
+      <!-- Book Cover Column -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+          {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}" style="height: 500px; object-fit: cover;" />
+          {% else %}
+            <img src="{% static 'libro/images/default-book-cover.jpg' %}" class="card-img-top" alt="{{ book.title }}" style="height: 500px; object-fit: cover;" />
+          {% endif %}
+          <div class="card-body text-center">
+            <div class="d-flex justify-content-center gap-2">
+              <a href="{% url 'libro:book-update' book.author.slug book.slug %}" class="btn btn-primary"><i class="bi bi-pencil me-2"></i>{% translate 'Edit' %}</a>
+              <a href="{% url 'libro:book-delete' book.author.slug book.slug %}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>{% translate 'Delete' %}</a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Book Details Column -->
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <h1 class="display-5 fw-bold mb-2">{{ book.title }}</h1>
+            <h3 class="h4 text-muted mb-4">
+              <i class="bi bi-person text-primary me-2"></i>
+              {% translate 'by' %}
+              <a href="{% url 'libro:author-detail' book.author.slug %}" class="text-decoration-none">{{ book.author.name }}</a>
+            </h3>
+
+            <div class="row g-3 mb-4">
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-3">
+                  <p class="mb-1 small text-muted">
+                    {% translate 'ISBN' %}
+                  </p>
+                  <p class="mb-0 fw-bold">{{ book.isbn|default:'-' }}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-3">
+                  <p class="mb-1 small text-muted">
+                    {% translate 'Publication Date' %}
+                  </p>
+                  <p class="mb-0 fw-bold">{{ book.publication_date|date:'F j, Y'|default:'-' }}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 bg-light rounded-3">
+                  <p class="mb-1 small text-muted">
+                    {% translate 'Rating' %}
+                  </p>
+                  <p class="mb-0">
+                    <span class="fw-bold text-primary">{{ book.average_rating|floatformat:1 }}</span>
+                    <small class="text-muted">/5.0</small>
+                    <i class="bi bi-star-fill text-warning ms-1"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="h5 mb-3"><i class="bi bi-book text-primary me-2"></i>{% translate 'Description' %}</h4>
+            <p class="text-muted">{{ book.description|linebreaks }}</p>
+          </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4 class="h5 mb-0"><i class="bi bi-star text-primary me-2"></i>{% translate 'Reviews' %}</h4>
+              <button class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#addReviewModal"><i class="bi bi-plus-circle me-2"></i>{% translate 'Write Review' %}</button>
+            </div>
+
+            <!-- Reviews List -->
+            {% for review in book.reviews.all %}
+              <div class="border-bottom mb-3 pb-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div>
+                    <h5 class="h6 mb-1">{{ review.title }}</h5>
+                    <p class="small text-muted mb-1">
+                      {% translate 'by' %} {{ review.user.username }} •
+                      {{ review.created_at|date:'F j, Y' }}
+                    </p>
+                  </div>
+                  <div class="badge bg-primary rounded-pill">
+                    {{ review.rating }}/5 <i class="bi bi-star-fill ms-1"></i>
+                  </div>
+                </div>
+                <p class="mb-2">{{ review.content }}</p>
+
+                <!-- Comments Section -->
+                <div class="ms-4 mt-3">
+                  <button class="btn btn-link btn-sm p-0 text-decoration-none" data-bs-toggle="collapse" data-bs-target="#comments-{{ review.id }}">
+                    <i class="bi bi-chat me-1"></i>
+                    {% translate 'Comments' %}({{ review.comments.count }})
+                  </button>
+
+                  <div class="collapse mt-2" id="comments-{{ review.id }}">
+                    {% for comment in review.comments.all %}
+                      <div class="border-start border-3 ps-3 mb-2">
+                        <p class="small mb-1">
+                          <strong>{{ comment.user.username }}</strong>
+                          <span class="text-muted">• {{ comment.created_at|date:'F j, Y' }}</span>
+                        </p>
+                        <p class="mb-0">{{ comment.content }}</p>
+                      </div>
+                    {% endfor %}
+
+                    <!-- Add Comment Form -->
+                    <form method="post" action="{% url 'libro:add-comment' review.id %}" class="mt-3">
+                      {% csrf_token %}
+                      <div class="input-group">
+                        <input type="text" name="content" class="form-control form-control-sm" placeholder="{% translate 'Add a comment...' %}" required />
+                        <button type="submit" class="btn btn-outline-primary btn-sm"><i class="bi bi-send"></i></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            {% empty %}
+              <div class="text-center text-muted py-4">
+                <i class="bi bi-chat-square-text display-4"></i>
+                <p class="mt-3">
+                  {% translate 'No reviews yet. Be the first to review this book!' %}
+                </p>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+
+  <!-- Add Review Modal -->
+  <div class="modal fade" id="addReviewModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{% translate 'Write a Review' %}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form method="post" action="{% url 'libro:add-review' book.slug %}">
+          {% csrf_token %}
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">{% translate 'Rating' %}</label>
+              <div class="rating">
+                {# prettier-ignore-start #}
+                {% for i in "12345" %}
+                  <input type="radio" name="rating" value="{{ i }}" id="star{{ i }}" required />
+                  <label for="star{{ i }}"><i class="bi bi-star-fill"></i></label>
+                {% endfor %}
+                {# prettier-ignore-end #}
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">{% translate 'Title' %}</label>
+              <input type="text" name="title" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">{% translate 'Review' %}</label>
+              <textarea name="content" class="form-control" rows="4" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{% translate 'Cancel' %}</button>
+            <button type="submit" class="btn btn-primary">{% translate 'Submit Review' %}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_css %}
+  <style>
+    .rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    .rating input {
+      display: none;
+    }
+    .rating label {
+      color: #ddd;
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 0 0.2rem;
+    }
+    .rating input:checked ~ label,
+    .rating label:hover,
+    .rating label:hover ~ label {
+      color: #ffc107;
+    }
+  </style>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'libro/js/book_detail.js' %}"></script>
 {% endblock %}

@@ -1,15 +1,83 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
-  <h1>{{ author.name }}</h1>
-  <div>
-    {% if author.photo %}
-      <img src="{{ author.photo.url }}" alt="{{ author.name }}" />
-    {% endif %}
-    <p>{{ author.biography }}</p>
-    <p>Birth date: {{ author.birth_date|default:'Unknown' }}</p>
-    <p>Death date: {{ author.death_date|default:'' }}</p>
+  <div class="container py-4">
+    <div class="row g-4">
+      <!-- Author Info Column -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm text-center">
+          {% if author.photo %}
+            <img src="{{ author.photo.url }}" class="card-img-top rounded-circle mx-auto mt-4" alt="{{ author.name }}" style="width: 200px; height: 200px; object-fit: cover;" />
+          {% else %}
+            <div class="bg-light rounded-circle mx-auto mt-4 d-flex align-items-center justify-content-center" style="width: 200px; height: 200px;">
+              <i class="bi bi-person-circle text-secondary" style="font-size: 5rem;"></i>
+            </div>
+          {% endif %}
+          <div class="card-body">
+            <h1 class="card-title h2 mb-3">{{ author.name }}</h1>
+            <div class="d-flex justify-content-center gap-2 mb-3">
+              <a href="{% url 'libro:author-update' author.slug %}" class="btn btn-primary"><i class="bi bi-pencil me-2"></i>{% translate 'Edit' %}</a>
+              <a href="{% url 'libro:author-delete' author.slug %}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>{% translate 'Delete' %}</a>
+              <a href="{% url 'libro:book-create' author.slug %}" class="btn btn-outline-primary"><i class="bi bi-plus me-2"></i>{% translate 'Add Book' %}</a>
+            </div>
+            <hr />
+            <div class="text-start">
+              <p class="mb-2">
+                <i class="bi bi-calendar3 text-primary me-2"></i>
+                <strong>{% translate 'Birth Date:' %}</strong>
+                <span class="text-muted">{{ author.birth_date|default:'Unknown' }}</span>
+              </p>
+              {% if author.death_date %}
+                <p class="mb-2">
+                  <i class="bi bi-calendar3-week text-primary me-2"></i>
+                  <strong>{% translate 'Death Date:' %}</strong>
+                  <span class="text-muted">{{ author.death_date }}</span>
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Biography and Books Column -->
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h4 mb-3"><i class="bi bi-journal-text text-primary me-2"></i>{% translate 'Biography' %}</h2>
+            <p class="card-text">{{ author.biography }}</p>
+          </div>
+        </div>
+
+        <!-- Author's Books -->
+        <h2 class="h4 mb-3"><i class="bi bi-books text-primary me-2"></i>{% translate 'Books by' %} {{ author.name }}</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for book in author.books.all %}
+            <div class="col">
+              <div class="card h-100 shadow-sm">
+                {% if book.cover_image %}
+                  <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}" style="height: 200px; object-fit: cover;" />
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ book.title }}</h5>
+                  <p class="card-text small text-muted">{{ book.description|truncatewords:20 }}</p>
+                  <a href="{% url 'libro:book-detail' book.pk %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye me-1"></i>{% translate 'View Details' %}</a>
+                </div>
+              </div>
+            </div>
+          {% empty %}
+            <div class="col-12">
+              <div class="text-center text-muted py-4">
+                <i class="bi bi-book display-1"></i>
+                <p class="mt-3">
+                  {% translate 'No books available for this author yet.' %}
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
-  <a href="{% url 'libro:author-update' author.slug %}" class="btn btn-primary">Edit</a>
-  <a href="{% url 'libro:author-delete' author.slug %}" class="btn btn-danger">Delete</a>
 {% endblock %}

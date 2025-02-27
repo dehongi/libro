@@ -12,6 +12,11 @@ from .views import (
     BookDeleteView,
     AuthorBookListView,
     LibroHome,
+    add_review,
+    edit_review,
+    delete_review,
+    add_comment,
+    delete_comment,
 )
 
 app_name = "libro"
@@ -32,14 +37,14 @@ urlpatterns = [
     ),
     path("books/", BookListView.as_view(), name="book-list"),
     path(
-        "authors/<slug:author_pk>/books/<slug:slug>/",
-        BookDetailView.as_view(),
-        name="book-detail",
-    ),
-    path(
         "authors/<slug:author_slug>/books/add/",
         BookCreateView.as_view(),
         name="book-create",
+    ),
+    path(
+        "authors/<slug:author_pk>/books/<slug:slug>/",
+        BookDetailView.as_view(),
+        name="book-detail",
     ),
     path(
         "authors/<slug:author_slug>/books/<slug:slug>/edit/",
@@ -51,4 +56,9 @@ urlpatterns = [
         BookDeleteView.as_view(),
         name="book-delete",
     ),
+    path("books/<slug:book_slug>/review/add/", add_review, name="add-review"),
+    path("reviews/<int:review_id>/edit/", edit_review, name="edit-review"),
+    path("reviews/<int:review_id>/delete/", delete_review, name="delete-review"),
+    path("reviews/<int:review_id>/comment/add/", add_comment, name="add-comment"),
+    path("comments/<int:comment_id>/delete/", delete_comment, name="delete-comment"),
 ]

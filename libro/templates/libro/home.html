@@ -41,7 +41,7 @@
               <h5 class="card-title">{{ book.title }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">by {{ book.author.name }}</h6>
               <p class="card-text">{{ book.description|truncatewords:20 }}</p>
-              <a href="{% url 'libro:book-detail' book.pk %}" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> View Details</a>
+              <a href="{% url 'libro:book-detail' book.author.slug book.slug %}" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> View Details</a>
             </div>
           </div>
         </div>
