@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "website.apps.WebsiteConfig",
     "libro.apps.LibroConfig",
+    # Django-cleanup
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 MIDDLEWARE = [
