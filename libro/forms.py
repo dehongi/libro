@@ -9,7 +9,6 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = [
             "title",
-            "author",
             "genres",
             "description",
             "cover_image",
@@ -21,11 +20,6 @@ class BookForm(forms.ModelForm):
                 attrs={
                     "class": "form-control",
                     "placeholder": _("Enter book title"),
-                }
-            ),
-            "author": forms.Select(
-                attrs={
-                    "class": "form-control select2",
                 }
             ),
             "genres": forms.CheckboxSelectMultiple(

@@ -55,7 +55,7 @@ class AuthorCreateView(LoginRequiredMixin, CreateView):
         return context
 
 
-class AuthorUpdateView(LoginRequiredMixin, UpdateView):
+class AuthorUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update an existing author."""
 
     model = Author
@@ -67,17 +67,25 @@ class AuthorUpdateView(LoginRequiredMixin, UpdateView):
         context["title"] = _("Edit Author")
         return context
 
-    def get_success_url(self):
-        return reverse_lazy("libro:author-detail", kwargs={"pk": self.object.pk})
+    def test_func(self):
+        author = self.get_object()
+        return self.request.user == author.created_by
 
 
-class AuthorDeleteView(LoginRequiredMixin, DeleteView):
+class AuthorDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Delete an author."""
 
     model = Author
     template_name = "libro/author_confirm_delete.html"
     success_url = reverse_lazy("author-list")
     context_object_name = "author"
+
+    def test_func(self):
+        author = self.get_object()
+        return self.request.user == author.created_by
+
+    def get_success_url(self):
+        return reverse_lazy("libro:author-list")
 
 
 class AuthorBookListView(ListView):
@@ -133,7 +141,7 @@ class BookCreateView(LoginRequiredMixin, CreateView):
         return context
 
 
-class BookUpdateView(LoginRequiredMixin, UpdateView):
+class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update an existing book."""
 
     model = Book
@@ -145,17 +153,25 @@ class BookUpdateView(LoginRequiredMixin, UpdateView):
         context["title"] = _("Edit Book")
         return context
 
-    def get_success_url(self):
-        return reverse_lazy("libro:book-detail", kwargs={"pk": self.object.pk})
+    def test_func(self):
+        book = self.get_object()
+        return self.request.user == book.created_by
 
 
-class BookDeleteView(LoginRequiredMixin, DeleteView):
+class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Delete a book."""
 
     model = Book
     template_name = "libro/book_confirm_delete.html"
     success_url = reverse_lazy("libro:book-list")
     context_object_name = "book"
+
+    def test_func(self):
+        book = self.get_object()
+        return self.request.user == book.created_by
+
+    def get_success_url(self):
+        return reverse_lazy("libro:book-list")
 
 
 class LibroHome(TemplateView):
@@ -183,7 +199,7 @@ def add_review(request, book_slug):
         if Review.objects.filter(book=book, user=request.user).exists():
             messages.error(request, _("You have already reviewed this book."))
             return redirect(
-                "libro:book-detail", author_slug=book.author.slug, book_slug=book_slug
+                "libro:book-detail", author_slug=book.author.slug, slug=book_slug
             )
 
         if form.is_valid():
@@ -197,9 +213,7 @@ def add_review(request, book_slug):
     except ValidationError as e:
         messages.error(request, str(e))
 
-    return redirect(
-        "libro:book-detail", author_slug=book.author.slug, book_slug=book_slug
-    )
+    return redirect("libro:book-detail", author_slug=book.author.slug, slug=book_slug)
 
 
 @login_required
@@ -267,7 +281,7 @@ def add_comment(request, review_id):
     return redirect(
         "libro:book-detail",
         author_slug=review.book.author.slug,
-        book_slug=review.book.slug,
+        slug=review.book.slug,
     )
 
 

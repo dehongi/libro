@@ -1,0 +1,10 @@
+{% extends 'accounts/profile_base.html' %}
+{% load i18n %}
+
+{% block profile_actions %}
+  {% if user.is_authenticated and user != profile %}
+    <div class="d-grid">
+      <a href="{% url 'accounts:profile' %}" class="btn btn-outline-primary"><i class="bi bi-person me-2"></i>{% translate 'View My Profile' %}</a>
+    </div>
+  {% endif %}
+{% endblock %}

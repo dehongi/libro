@@ -42,7 +42,7 @@ urlpatterns = [
         name="book-create",
     ),
     path(
-        "authors/<slug:author_pk>/books/<slug:slug>/",
+        "authors/<slug:author_slug>/books/<slug:slug>/",
         BookDetailView.as_view(),
         name="book-detail",
     ),

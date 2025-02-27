@@ -5,7 +5,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link px-3" href="{% url 'libro:home' %}"><i class="bi bi-book-half me-1"></i> Books</a>
+          <a class="nav-link px-3" href="{% url 'libro:home' %}"><i class="bi bi-book-half me-1"></i> Browse</a>
         </li>
         <li class="nav-item">
           <a class="nav-link px-3" href="{% url 'website:about' %}"><i class="bi bi-info-circle me-1"></i> About</a>
@@ -20,13 +20,16 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle me-1"></i> {{ user.username }}</a>
             <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="navbarDropdown">
               <li>
-                <a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a>
+                <a class="dropdown-item" href="{% url 'profile' %}"><i class="bi bi-person me-2"></i> Profile</a>
               </li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
               <li>
-                <a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right me-2"></i> Logout</a>
+                <form method="post" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <button class="dropdown-item text-danger" type="submit"><i class="bi bi-box-arrow-right me-2"></i> Logout</button>
+                </form>
               </li>
             </ul>
           </li>

@@ -18,8 +18,10 @@
           <div class="card-body">
             <h1 class="card-title h2 mb-3">{{ author.name }}</h1>
             <div class="d-flex justify-content-center gap-2 mb-3">
-              <a href="{% url 'libro:author-update' author.slug %}" class="btn btn-primary"><i class="bi bi-pencil me-2"></i>{% translate 'Edit' %}</a>
-              <a href="{% url 'libro:author-delete' author.slug %}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>{% translate 'Delete' %}</a>
+              {% if user == author.created_by %}
+                <a href="{% url 'libro:author-update' author.slug %}" class="btn btn-primary"><i class="bi bi-pencil me-2"></i>{% translate 'Edit' %}</a>
+                <a href="{% url 'libro:author-delete' author.slug %}" class="btn btn-outline-danger"><i class="bi bi-trash me-2"></i>{% translate 'Delete' %}</a>
+              {% endif %}
               <a href="{% url 'libro:book-create' author.slug %}" class="btn btn-outline-primary"><i class="bi bi-plus me-2"></i>{% translate 'Add Book' %}</a>
             </div>
             <hr />
@@ -57,12 +59,14 @@
             <div class="col">
               <div class="card h-100 shadow-sm">
                 {% if book.cover_image %}
-                  <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}" style="height: 200px; object-fit: cover;" />
+                  <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}" style="height: 400px; object-fit: cover;" />
+                {% else %}
+                  <img src="{% static 'libro/images/default-book-cover.jpg' %}" class="card-img-top" alt="{{ book.title }}" style="height: 4  00px; object-fit: cover;" />
                 {% endif %}
                 <div class="card-body">
                   <h5 class="card-title">{{ book.title }}</h5>
                   <p class="card-text small text-muted">{{ book.description|truncatewords:20 }}</p>
-                  <a href="{% url 'libro:book-detail' book.pk %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye me-1"></i>{% translate 'View Details' %}</a>
+                  <a href="{% url 'libro:book-detail' author.slug book.slug %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye me-1"></i>{% translate 'View Details' %}</a>
                 </div>
               </div>
             </div>

@@ -1,0 +1,9 @@
+{% extends 'accounts/profile_base.html' %}
+{% load i18n %}
+
+{% block profile_actions %}
+  <div class="d-grid gap-2">
+    <a href="{% url 'profile-edit' %}" class="btn btn-primary"><i class="bi bi-pencil me-2"></i>{% translate 'Edit Profile' %}</a>
+    <a href="{% url 'change-password' %}" class="btn btn-outline-primary"><i class="bi bi-key me-2"></i>{% translate 'Change Password' %}</a>
+  </div>
+{% endblock %}
