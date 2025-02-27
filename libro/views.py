@@ -182,7 +182,9 @@ def add_review(request, book_slug):
         # Check if user has already reviewed this book
         if Review.objects.filter(book=book, user=request.user).exists():
             messages.error(request, _("You have already reviewed this book."))
-            return redirect("libro:book-detail", book_slug=book_slug)
+            return redirect(
+                "libro:book-detail", author_slug=book.author.slug, book_slug=book_slug
+            )
 
         if form.is_valid():
             review = form.save(commit=False)
@@ -195,7 +197,9 @@ def add_review(request, book_slug):
     except ValidationError as e:
         messages.error(request, str(e))
 
-    return redirect("libro:book-detail", book_slug=book_slug)
+    return redirect(
+        "libro:book-detail", author_slug=book.author.slug, book_slug=book_slug
+    )
 
 
 @login_required
@@ -211,7 +215,11 @@ def edit_review(request, review_id):
     else:
         messages.error(request, _("Please correct the errors below."))
 
-    return redirect("libro:book-detail", book_slug=review.book.slug)
+    return redirect(
+        "libro:book-detail",
+        author_slug=review.book.author.slug,
+        book_slug=review.book.slug,
+    )
 
 
 @login_required
@@ -219,10 +227,12 @@ def edit_review(request, review_id):
 def delete_review(request, review_id):
     """Delete a review."""
     review = get_object_or_404(Review, id=review_id, user=request.user)
-    book_slug = review.book.slug
+    book = review.book
     review.delete()
     messages.success(request, _("Your review has been deleted successfully."))
-    return redirect("libro:book-detail", book_slug=book_slug)
+    return redirect(
+        "libro:book-detail", author_slug=book.author.slug, book_slug=book.slug
+    )
 
 
 @login_required
@@ -239,7 +249,6 @@ def add_comment(request, review_id):
         comment.save()
 
         if request.headers.get("X-Requested-With") == "XMLHttpRequest":
-            # Return JSON response for AJAX requests
             return JsonResponse(
                 {
                     "status": "success",
@@ -255,7 +264,11 @@ def add_comment(request, review_id):
     else:
         messages.error(request, _("Please enter a valid comment."))
 
-    return redirect("libro:book-detail", book_slug=review.book.slug)
+    return redirect(
+        "libro:book-detail",
+        author_slug=review.book.author.slug,
+        book_slug=review.book.slug,
+    )
 
 
 @login_required
@@ -263,11 +276,13 @@ def add_comment(request, review_id):
 def delete_comment(request, comment_id):
     """Delete a comment."""
     comment = get_object_or_404(Comment, id=comment_id, user=request.user)
-    book_slug = comment.review.book.slug
+    book = comment.review.book
     comment.delete()
 
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
         return JsonResponse({"status": "success"})
 
     messages.success(request, _("Your comment has been deleted successfully."))
-    return redirect("libro:book-detail", book_slug=book_slug)
+    return redirect(
+        "libro:book-detail", author_slug=book.author.slug, book_slug=book.slug
+    )
