@@ -9,7 +9,7 @@ User = settings.AUTH_USER_MODEL
 
 
 class Author(models.Model):
-    """Model representing a book author. """
+    """Model representing a book author."""
 
     name = models.CharField(_("name"), max_length=55)
     slug = models.SlugField(_("slug"), max_length=55, unique=True)
@@ -96,7 +96,10 @@ class Book(models.Model):
         return self.reviews.aggregate(models.Avg("rating"))["rating__avg"] or 0
 
     def get_absolute_url(self):
-        return reverse("libro:book-detail", kwargs={"slug": self.slug})
+        return reverse(
+            "libro:book-detail",
+            kwargs={"author_slug": self.author.slug, "slug": self.slug},
+        )
 
     # Create a unique slug for each book
     def save(self, *args, **kwargs):
