@@ -18,6 +18,7 @@ from django.core.exceptions import ValidationError
 
 from .models import Author, Book, Review, Comment
 from .forms import AuthorForm, BookForm, ReviewForm, CommentForm
+from .utils import process_book_cover, process_author_photo
 
 
 class AuthorListView(ListView):
@@ -46,6 +47,8 @@ class AuthorCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("libro:author-list")
 
     def form_valid(self, form):
+        if form.instance.photo:
+            form.instance.photo = process_author_photo(form.instance.photo)
         form.instance.created_by = self.request.user
         return super().form_valid(form)
 
@@ -61,6 +64,11 @@ class AuthorUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Author
     template_name = "libro/author_form.html"
     form_class = AuthorForm
+
+    def form_valid(self, form):
+        if form.instance.photo:
+            form.instance.photo = process_author_photo(form.instance.photo)
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -131,6 +139,8 @@ class BookCreateView(LoginRequiredMixin, CreateView):
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
+        if form.instance.cover_image:
+            form.instance.cover_image = process_book_cover(form.instance.cover_image)
         form.instance.author = self.author
         form.instance.created_by = self.request.user
         return super().form_valid(form)
@@ -147,6 +157,11 @@ class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Book
     form_class = BookForm
     template_name = "libro/book_form.html"
+
+    def form_valid(self, form):
+        if form.instance.cover_image:
+            form.instance.cover_image = process_book_cover(form.instance.cover_image)
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

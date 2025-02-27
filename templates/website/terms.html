@@ -1,21 +1,140 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
-<div class="container py-4">
-    <h1 class="mb-4">{{ title }}</h1>
-    <div class="row">
-        <div class="col-md-8">
-            <h2>1. Acceptance of Terms</h2>
-            <p>By accessing and using this website, you accept and agree to be bound by the terms
-               and provision of this agreement.</p>
-
-            <h2>2. Use License</h2>
-            <p>Permission is granted to temporarily download one copy of the materials for personal,
-               non-commercial transitory viewing only.</p>
-
-            <h2>3. User Account</h2>
-            <p>You are responsible for maintaining the confidentiality of your account and password.</p>
-        </div>
+  <div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-4 fw-bold text-primary mb-4"><i class="bi bi-file-text me-2"></i>{% translate 'Terms of Service' %}</h1>
+        <p class="lead mb-0">
+          {% translate 'Please read these terms carefully before using Libro. By using our service, you agree to these terms.' %}
+        </p>
+      </div>
     </div>
-</div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Last Updated -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center text-muted">
+              <i class="bi bi-clock-history me-2"></i>
+              {% translate 'Last Updated' %}:{% now 'F j, Y' %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms Sections -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4">
+              <i class="bi bi-1-circle text-primary me-2"></i>
+              {% translate 'Acceptance of Terms' %}
+            </h2>
+            <p class="text-muted mb-4">
+              {% translate 'By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our service.' %}
+            </p>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4">
+              <i class="bi bi-2-circle text-primary me-2"></i>
+              {% translate 'Use License' %}
+            </h2>
+            <div class="mb-4">
+              <h3 class="h5 mb-3">{% translate 'Permitted Use' %}</h3>
+              <ul class="text-muted mb-4">
+                <li>
+                  {% translate 'View and interact with book information' %}
+                </li>
+                <li>
+                  {% translate 'Create and manage your personal account' %}
+                </li>
+                <li>
+                  {% translate 'Write and share book reviews' %}
+                </li>
+                <li>
+                  {% translate 'Participate in community discussions' %}
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="h5 mb-3">{% translate 'Restrictions' %}</h3>
+              <ul class="text-muted mb-0">
+                <li>
+                  {% translate 'Commercial use of content without permission' %}
+                </li>
+                <li>
+                  {% translate 'Redistribution of site content' %}
+                </li>
+                <li>
+                  {% translate 'Unauthorized data collection or scraping' %}
+                </li>
+                <li>
+                  {% translate 'Any activity that disrupts service functionality' %}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4">
+              <i class="bi bi-3-circle text-primary me-2"></i>
+              {% translate 'User Accounts' %}
+            </h2>
+            <div class="d-flex mb-3">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-shield-lock"></i>
+              </div>
+              <div class="ms-3">
+                <p class="mb-0">
+                  {% translate 'You are responsible for maintaining the confidentiality of your account and password.' %}
+                </p>
+              </div>
+            </div>
+            <div class="d-flex mb-3">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-person-check"></i>
+              </div>
+              <div class="ms-3">
+                <p class="mb-0">
+                  {% translate 'You must provide accurate and complete information when creating an account.' %}
+                </p>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-exclamation-triangle"></i>
+              </div>
+              <div class="ms-3">
+                <p class="mb-0">
+                  {% translate 'We reserve the right to suspend or terminate accounts that violate our terms.' %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4">
+              <i class="bi bi-question-circle text-primary me-2"></i>
+              {% translate 'Questions About Terms?' %}
+            </h2>
+            <p class="text-muted mb-4">
+              {% translate 'If you have any questions about these Terms of Service, please contact us:' %}
+            </p>
+            <a href="{% url 'website:contact' %}" class="btn btn-primary"><i class="bi bi-envelope me-2"></i>{% translate 'Contact Us' %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

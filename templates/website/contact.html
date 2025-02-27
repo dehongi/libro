@@ -1,29 +1,106 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
-<div class="container py-4">
-    <h1 class="mb-4">{{ title }}</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Get in Touch</h5>
-                    <p class="card-text">We'd love to hear from you. Send us a message!</p>
-                    
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <i class="bi bi-envelope"></i> Email: contact@libro.com
-                        </li>
-                        <li class="mb-2">
-                            <i class="bi bi-telephone"></i> Phone: +1 (555) 123-4567
-                        </li>
-                        <li class="mb-2">
-                            <i class="bi bi-geo-alt"></i> Address: 123 Book Street, Reading City
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+  <div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold text-primary mb-4"><i class="bi bi-chat-dots me-2"></i>{% translate 'Get in Touch' %}</h1>
+        <p class="lead mb-4">
+          {% translate "Have questions, suggestions, or just want to say hello? We'd love to hear from you! Choose your preferred way to reach us below." %}
+        </p>
+      </div>
     </div>
-</div>
+
+    <div class="row g-4">
+      <!-- Contact Info -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4"><i class="bi bi-info-circle text-primary me-2"></i>{% translate 'Contact Information' %}</h2>
+
+            <div class="d-flex align-items-start mb-4">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-envelope-fill display-6"></i>
+              </div>
+              <div class="ms-3">
+                <h3 class="h5 mb-1">{% translate 'Email Us' %}</h3>
+                <p class="mb-0">
+                  <a href="mailto:contact@libro.com" class="text-decoration-none">contact@libro.com</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start mb-4">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-telephone-fill display-6"></i>
+              </div>
+              <div class="ms-3">
+                <h3 class="h5 mb-1">{% translate 'Call Us' %}</h3>
+                <p class="mb-0">
+                  <a href="tel:+15551234567" class="text-decoration-none">+1 (555) 123-4567</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-geo-alt-fill display-6"></i>
+              </div>
+              <div class="ms-3">
+                <h3 class="h5 mb-1">{% translate 'Visit Us' %}</h3>
+                <p class="mb-0">
+                  123 Book Street<br />
+                  Reading City, RC 12345<br />
+                  United States
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4"><i class="bi bi-people text-primary me-2"></i>{% translate 'Connect With Us' %}</h2>
+
+            <div class="d-grid gap-3">
+              <a href="#" class="btn btn-outline-primary"><i class="bi bi-facebook me-2"></i>Facebook</a>
+              <a href="#" class="btn btn-outline-info"><i class="bi bi-twitter me-2"></i>Twitter</a>
+              <a href="#" class="btn btn-outline-danger"><i class="bi bi-instagram me-2"></i>Instagram</a>
+              <a href="#" class="btn btn-outline-dark"><i class="bi bi-github me-2"></i>GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Hours -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4"><i class="bi bi-clock text-primary me-2"></i>{% translate 'Business Hours' %}</h2>
+
+            <ul class="list-unstyled mb-0">
+              <li class="d-flex justify-content-between py-2 border-bottom">
+                <span>{% translate 'Monday - Friday' %}</span>
+                <span class="text-primary">9:00 AM - 6:00 PM</span>
+              </li>
+              <li class="d-flex justify-content-between py-2 border-bottom">
+                <span>{% translate 'Saturday' %}</span>
+                <span class="text-primary">10:00 AM - 4:00 PM</span>
+              </li>
+              <li class="d-flex justify-content-between py-2">
+                <span>{% translate 'Sunday' %}</span>
+                <span class="text-primary">{% translate 'Closed' %}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

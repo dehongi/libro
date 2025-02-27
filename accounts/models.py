@@ -23,4 +23,4 @@ class CustomUser(AbstractUser):
         verbose_name_plural = _("users")
 
     def __str__(self):
-        return self.username
+        return self.username 

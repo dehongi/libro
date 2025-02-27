@@ -9,7 +9,7 @@ User = settings.AUTH_USER_MODEL
 
 
 class Author(models.Model):
-    """Model representing a book author."""
+    """Model representing a book author. """
 
     name = models.CharField(_("name"), max_length=55)
     slug = models.SlugField(_("slug"), max_length=55, unique=True)

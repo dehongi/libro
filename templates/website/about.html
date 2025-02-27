@@ -1,24 +1,138 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
-<div class="container py-4">
-    <h1 class="mb-4">{{ title }}</h1>
-    <div class="row">
-        <div class="col-md-8">
-            <h2>Our Mission</h2>
-            <p class="lead">
-                To create a vibrant community where book lovers can discover, share, and discuss their 
-                favorite reads.
-            </p>
-            
-            <h2 class="mt-4">What We Offer</h2>
-            <ul class="list-unstyled">
-                <li><i class="bi bi-check-circle text-success"></i> Comprehensive book database</li>
-                <li><i class="bi bi-check-circle text-success"></i> User reviews and ratings</li>
-                <li><i class="bi bi-check-circle text-success"></i> Community discussions</li>
-                <li><i class="bi bi-check-circle text-success"></i> Personal reading lists</li>
-            </ul>
-        </div>
+  <div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5 align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold text-primary mb-4">{% translate 'About Libro' %}</h1>
+        <p class="lead mb-4">
+          {% translate "Welcome to Libro, your digital sanctuary for book lovers. We're more than just a book catalog – we're a thriving community where readers come together to discover, share, and discuss their literary adventures." %}
+        </p>
+        <a href="{% url 'libro:book-list' %}" class="btn btn-primary btn-lg rounded-pill"><i class="bi bi-book me-2"></i>{% translate 'Explore Books' %}</a>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'website/images/about-hero.svg' %}" alt="About Libro" class="img-fluid" />
+      </div>
     </div>
-</div>
+
+    <!-- Mission & Values -->
+    <div class="row mb-5">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center p-4">
+            <div class="display-5 text-primary mb-3">
+              <i class="bi bi-bullseye"></i>
+            </div>
+            <h3 class="h4 mb-3">{% translate 'Our Mission' %}</h3>
+            <p class="text-muted mb-0">
+              {% translate 'To create an inclusive digital space where book enthusiasts can connect, share their passion for reading, and discover their next favorite book.' %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center p-4">
+            <div class="display-5 text-primary mb-3">
+              <i class="bi bi-eye"></i>
+            </div>
+            <h3 class="h4 mb-3">{% translate 'Our Vision' %}</h3>
+            <p class="text-muted mb-0">
+              {% translate "To become the world's most trusted and engaging platform for book discovery and literary discussions." %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center p-4">
+            <div class="display-5 text-primary mb-3">
+              <i class="bi bi-heart"></i>
+            </div>
+            <h3 class="h4 mb-3">{% translate 'Our Values' %}</h3>
+            <p class="text-muted mb-0">
+              {% translate 'Community, inclusivity, and the love of reading guide everything we do at Libro.' %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mb-5">
+      <div class="col-12 text-center mb-4">
+        <h2 class="h1 mb-4">{% translate 'What We Offer' %}</h2>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="d-flex align-items-start">
+          <div class="flex-shrink-0 text-primary me-3">
+            <i class="bi bi-book display-6"></i>
+          </div>
+          <div>
+            <h3 class="h5 mb-2">{% translate 'Extensive Library' %}</h3>
+            <p class="text-muted mb-0">
+              {% translate 'Access to a vast collection of books across various genres and languages.' %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="d-flex align-items-start">
+          <div class="flex-shrink-0 text-primary me-3">
+            <i class="bi bi-star display-6"></i>
+          </div>
+          <div>
+            <h3 class="h5 mb-2">{% translate 'Reviews & Ratings' %}</h3>
+            <p class="text-muted mb-0">
+              {% translate 'Share your thoughts and discover what others think about books.' %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="d-flex align-items-start">
+          <div class="flex-shrink-0 text-primary me-3">
+            <i class="bi bi-people display-6"></i>
+          </div>
+          <div>
+            <h3 class="h5 mb-2">{% translate 'Community' %}</h3>
+            <p class="text-muted mb-0">
+              {% translate 'Connect with fellow readers and participate in literary discussions.' %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="d-flex align-items-start">
+          <div class="flex-shrink-0 text-primary me-3">
+            <i class="bi bi-bookmark display-6"></i>
+          </div>
+          <div>
+            <h3 class="h5 mb-2">{% translate 'Reading Lists' %}</h3>
+            <p class="text-muted mb-0">
+              {% translate 'Create and manage your personal reading lists and track your progress.' %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Join Us Section -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card border-0 bg-primary text-white shadow-lg">
+          <div class="card-body p-5 text-center">
+            <h2 class="h1 mb-4">{% translate 'Join Our Community' %}</h2>
+            <p class="lead mb-4">
+              {% translate 'Ready to embark on your next literary adventure? Join Libro today and become part of our growing community of book lovers.' %}
+            </p>
+            <a href="{% url 'signup' %}" class="btn btn-light btn-lg rounded-pill"><i class="bi bi-person-plus me-2"></i>{% translate 'Sign Up Now' %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

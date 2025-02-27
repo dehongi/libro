@@ -1,27 +1,229 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
-<div class="container py-4">
-    <h1 class="mb-4">{{ title }}</h1>
-    <div class="row">
-        <div class="col-md-8">
-            <h2>Information We Collect</h2>
-            <p>We collect information that you provide directly to us when you:</p>
-            <ul>
-                <li>Create an account</li>
-                <li>Write reviews</li>
-                <li>Comment on reviews</li>
-                <li>Contact us</li>
-            </ul>
-
-            <h2>How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
-            <ul>
-                <li>Provide and maintain our services</li>
-                <li>Improve user experience</li>
-                <li>Send you updates and notifications</li>
-            </ul>
-        </div>
+  <div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-4 fw-bold text-primary mb-4"><i class="bi bi-shield-lock me-2"></i>{% translate 'Privacy Policy' %}</h1>
+        <p class="lead mb-0">
+          {% translate 'At Libro, we take your privacy seriously. This policy describes how we collect, use, and protect your personal information.' %}
+        </p>
+      </div>
     </div>
-</div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Last Updated -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center text-muted">
+              <i class="bi bi-clock-history me-2"></i>
+              {% translate 'Last Updated' %}:{% now 'F j, Y' %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Information Collection -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4">
+              <i class="bi bi-collection text-primary me-2"></i>
+              {% translate 'Information We Collect' %}
+            </h2>
+
+            <h3 class="h5 mb-3">{% translate 'Information You Provide' %}</h3>
+            <p class="text-muted mb-4">
+              {% translate 'We collect information that you provide directly to us when you:' %}
+            </p>
+            <div class="row g-4 mb-4">
+              <div class="col-md-6">
+                <div class="d-flex align-items-center p-3 bg-light rounded-3">
+                  <i class="bi bi-person-plus text-primary me-3 h4 mb-0"></i>
+                  <div>
+                    <h4 class="h6 mb-1">{% translate 'Create an Account' %}</h4>
+                    <p class="small text-muted mb-0">
+                      {% translate 'Username, email, and password' %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center p-3 bg-light rounded-3">
+                  <i class="bi bi-star text-primary me-3 h4 mb-0"></i>
+                  <div>
+                    <h4 class="h6 mb-1">{% translate 'Write Reviews' %}</h4>
+                    <p class="small text-muted mb-0">
+                      {% translate 'Ratings and review content' %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center p-3 bg-light rounded-3">
+                  <i class="bi bi-chat text-primary me-3 h4 mb-0"></i>
+                  <div>
+                    <h4 class="h6 mb-1">{% translate 'Comment on Reviews' %}</h4>
+                    <p class="small text-muted mb-0">
+                      {% translate 'Comment content and interactions' %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center p-3 bg-light rounded-3">
+                  <i class="bi bi-envelope text-primary me-3 h4 mb-0"></i>
+                  <div>
+                    <h4 class="h6 mb-1">{% translate 'Contact Us' %}</h4>
+                    <p class="small text-muted mb-0">
+                      {% translate 'Communication details and content' %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="h5 mb-3">{% translate 'Automatically Collected Information' %}</h3>
+            <p class="text-muted mb-0">
+              {% translate 'When you use our service, we automatically collect certain information, including:' %}
+            </p>
+            <ul class="text-muted mb-0">
+              <li>
+                {% translate 'Device information (browser type, operating system)' %}
+              </li>
+              <li>
+                {% translate 'Log data (IP address, access times, pages viewed)' %}
+              </li>
+              <li>
+                {% translate 'Usage patterns and preferences' %}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Information Usage -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4">
+              <i class="bi bi-gear text-primary me-2"></i>
+              {% translate 'How We Use Your Information' %}
+            </h2>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="flex-shrink-0 text-primary">
+                    <i class="bi bi-tools h4 mb-0"></i>
+                  </div>
+                  <div class="ms-3">
+                    <h3 class="h5 mb-2">{% translate 'Service Provision' %}</h3>
+                    <p class="text-muted mb-0">
+                      {% translate 'To provide and maintain our services, including user accounts and features' %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="flex-shrink-0 text-primary">
+                    <i class="bi bi-graph-up h4 mb-0"></i>
+                  </div>
+                  <div class="ms-3">
+                    <h3 class="h5 mb-2">{% translate 'Service Improvement' %}</h3>
+                    <p class="text-muted mb-0">
+                      {% translate "To analyze usage patterns and improve our website's functionality" %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="flex-shrink-0 text-primary">
+                    <i class="bi bi-bell h4 mb-0"></i>
+                  </div>
+                  <div class="ms-3">
+                    <h3 class="h5 mb-2">{% translate 'Communications' %}</h3>
+                    <p class="text-muted mb-0">
+                      {% translate 'To send you updates, notifications, and respond to your inquiries' %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="flex-shrink-0 text-primary">
+                    <i class="bi bi-shield-check h4 mb-0"></i>
+                  </div>
+                  <div class="ms-3">
+                    <h3 class="h5 mb-2">{% translate 'Security' %}</h3>
+                    <p class="text-muted mb-0">
+                      {% translate 'To protect our services and users from unauthorized access' %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Protection -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4">
+              <i class="bi bi-shield text-primary me-2"></i>
+              {% translate 'How We Protect Your Data' %}
+            </h2>
+            <p class="text-muted mb-4">
+              {% translate 'We implement appropriate security measures to protect your personal information, including:' %}
+            </p>
+            <div class="d-flex mb-3">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-lock"></i>
+              </div>
+              <div class="ms-3">
+                <p class="mb-0">
+                  {% translate 'Encryption of data transmission using SSL technology' %}
+                </p>
+              </div>
+            </div>
+            <div class="d-flex mb-3">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-shield-lock"></i>
+              </div>
+              <div class="ms-3">
+                <p class="mb-0">
+                  {% translate 'Secure storage of personal information' %}
+                </p>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="flex-shrink-0 text-primary">
+                <i class="bi bi-person-badge"></i>
+              </div>
+              <div class="ms-3">
+                <p class="mb-0">
+                  {% translate 'Limited access to personal information by authorized personnel' %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h2 class="h4 mb-4">
+              <i class="bi bi-question-circle text-primary me-2"></i>
+              {% translate 'Questions About Privacy?' %}
+            </h2>
+            <p class="text-muted mb-4">
+              {% translate 'If you have any questions about this Privacy Policy, please contact us:' %}
+            </p>
+            <a href="{% url 'website:contact' %}" class="btn btn-primary"><i class="bi bi-envelope me-2"></i>{% translate 'Contact Us' %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
