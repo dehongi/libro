@@ -1,41 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="{% url 'website:home' %}"><i class="bi bi-book"></i> Libro</a>
+    <a class="navbar-brand fw-bold" href="{% url 'website:home' %}"><i class="bi bi-book"></i> Libro</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'libro:home' %}">Books</a>
+          <a class="nav-link px-3" href="{% url 'libro:home' %}"><i class="bi bi-book-half me-1"></i> Books</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'website:about' %}">About</a>
+          <a class="nav-link px-3" href="{% url 'website:about' %}"><i class="bi bi-info-circle me-1"></i> About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'website:contact' %}">Contact</a>
+          <a class="nav-link px-3" href="{% url 'website:contact' %}"><i class="bi bi-envelope me-1"></i> Contact</a>
         </li>
       </ul>
       <ul class="navbar-nav">
         {% if user.is_authenticated %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i> {{ user.username }}</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle me-1"></i> {{ user.username }}</a>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="navbarDropdown">
               <li>
-                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a>
               </li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                <a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right me-2"></i> Logout</a>
               </li>
             </ul>
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-link px-3" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right me-1"></i> Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+            <a class="nav-link px-3" href="{% url 'signup' %}"><i class="bi bi-person-plus me-1"></i> Sign Up</a>
           </li>
         {% endif %}
       </ul>

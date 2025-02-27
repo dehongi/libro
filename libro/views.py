@@ -141,4 +141,13 @@ class BookDeleteView(LoginRequiredMixin, DeleteView):
 
 
 class LibroHome(TemplateView):
+    """Home page for the libro app showing latest books and authors."""
+
     template_name = "libro/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _("Explore Books & Authors")
+        context["latest_books"] = Book.objects.all().order_by("-created_at")[:6]
+        context["featured_authors"] = Author.objects.all().order_by("?")[:3]
+        return context

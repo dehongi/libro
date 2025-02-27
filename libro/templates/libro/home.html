@@ -3,28 +3,70 @@
 {% load i18n %}
 
 {% block title %}
-  Books and Authors
+  {% translate 'Books and Authors' %}
 {% endblock %}
 
 {% block content %}
-  <div class="px-4 py-5 my-5 text-center bg-light">
-    <!-- Added bg-light for better contrast -->
-    <h1 class="display-3 fw-bold text-body-emphasis mb-3">{{ title }}</h1> <!-- Increased font size -->
-    <p class="lead text-body-secondary mb-4">Discover your next great read with Libro – your digital companion for exploring books, sharing reviews, and connecting with fellow readers.</p>
-
-    <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-4 mb-4">
-        <a href="{% url 'libro:book-list' %}" class="btn btn-primary btn-lg w-100 rounded-pill"><i class="bi bi-book me-2"></i>Browse Books</a>
+  <!-- Hero Section -->
+  <div class="px-4 py-5 my-4 text-center bg-light rounded-3">
+    <h1 class="display-4 fw-bold text-body-emphasis mb-3">{{ title }}</h1>
+    <div class="col-lg-8 mx-auto">
+      <p class="lead mb-4">Browse our collection of books and discover new authors.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{% url 'libro:book-list' %}" class="btn btn-primary btn-lg px-4 gap-3"><i class="bi bi-book"></i> Browse All Books</a>
+        <a href="{% url 'libro:author-list' %}" class="btn btn-outline-secondary btn-lg px-4"><i class="bi bi-people"></i> View All Authors</a>
       </div>
-      <div class="col-md-6 col-lg-4 mb-4">
-        <a href="{% url 'signup' %}" class="btn btn-outline-secondary btn-lg w-100 rounded-pill"><i class="bi bi-person-plus me-2"></i>Join Now</a>
+    </div>
+  </div>
+
+  <!-- Latest Books Section -->
+  <div class="container py-5">
+    <div class="row mb-4 align-items-center">
+      <div class="col">
+        <h2 class="fw-bold">Latest Books</h2>
+      </div>
+      <div class="col text-end">
+        <a href="{% url 'libro:book-list' %}" class="btn btn-outline-primary">View All <i class="bi bi-arrow-right"></i></a>
       </div>
     </div>
 
-    <div class="row mt-5">
-      <div class="col-md-12 text-center">
-        <img src="{% static 'images/libro_homepage.jpg' %}" alt="Libro homepage image" class="img-fluid rounded" style="max-width:800px" />
-      </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for book in latest_books %}
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            {% if book.cover_image %}
+              <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}" style="height: 300px; object-fit: cover;" />
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ book.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">by {{ book.author.name }}</h6>
+              <p class="card-text">{{ book.description|truncatewords:20 }}</p>
+              <a href="{% url 'libro:book-detail' book.pk %}" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> View Details</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Featured Authors Section -->
+  <div class="container py-5">
+    <h2 class="fw-bold mb-4">Featured Authors</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for author in featured_authors %}
+        <div class="col">
+          <div class="card h-100 border-0 bg-light">
+            <div class="card-body text-center">
+              {% if author.photo %}
+                <img src="{{ author.photo.url }}" class="rounded-circle mb-3" alt="{{ author.name }}" style="width: 150px; height: 150px; object-fit: cover;" />
+              {% endif %}
+              <h5 class="card-title">{{ author.name }}</h5>
+              <p class="card-text text-muted">{{ author.bio|truncatewords:25 }}</p>
+              <a href="{% url 'libro:author-detail' author.pk %}" class="btn btn-outline-primary">View Profile</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
 {% endblock %}
