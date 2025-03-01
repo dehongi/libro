@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Pride and Prejudice",
+        "description": "The story follows the main character Elizabeth Bennet as she deals with issues of manners, upbringing, morality, education, and marriage in the society of the landed gentry of early 19th-century England.",
+        "isbn": "9780141439518",
+        "publication_date": "1813-01-28",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/PrideAndPrejudiceTitlePage.jpg/800px-PrideAndPrejudiceTitlePage.jpg"
+    },
+    {
+        "title": "Sense and Sensibility",
+        "description": "The story follows the Dashwood sisters, Elinor and Marianne, as they come of age and experience love and heartbreak for the first time.",
+        "isbn": "9780141439662",
+        "publication_date": "1811-10-30",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Sense_and_Sensibility_1st_ed.jpg/800px-Sense_and_Sensibility_1st_ed.jpg"
+    },
+    {
+        "title": "Emma",
+        "description": "The story follows Emma Woodhouse, a young woman who fancies herself a matchmaker in her small town, as she navigates romance and relationships.",
+        "isbn": "9780141439587",
+        "publication_date": "1815-12-23",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/EmmaTitle.jpg/800px-EmmaTitle.jpg"
+    },
+    {
+        "title": "Mansfield Park",
+        "description": "The story follows Fanny Price, a young woman who is sent to live with her wealthy aunt and uncle at their estate, Mansfield Park.",
+        "isbn": "9780141439808",
+        "publication_date": "1814-07-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Mansfield_Park_3rd_ed.jpg"
+    },
+    {
+        "title": "Persuasion",
+        "description": "The story follows Anne Elliot, who, at 27, is on the verge of spinsterhood when her former fiancé returns to her life after eight years.",
+        "isbn": "9780141439687",
+        "publication_date": "1817-12-20",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Persuasion_1st_ed.jpg"
+    }
+]

@@ -6,8 +6,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
     TemplateView,
+    FormView,
 )
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.decorators import login_required
@@ -15,9 +16,21 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.core.exceptions import ValidationError
+from django.core.files.storage import default_storage
+import json
+from django.core.files.base import ContentFile
+from django.template.defaultfilters import slugify
+import requests
 
 from .models import Author, Book, Review, Comment
-from .forms import AuthorForm, BookForm, ReviewForm, CommentForm
+from .forms import (
+    AuthorForm,
+    BookForm,
+    ReviewForm,
+    CommentForm,
+    AuthorBatchUploadForm,
+    BookBatchUploadForm,
+)
 from .utils import process_book_cover, process_author_photo
 
 
@@ -315,3 +328,152 @@ def delete_comment(request, comment_id):
     return redirect(
         "libro:book-detail", author_slug=book.author.slug, book_slug=book.slug
     )
+
+
+class AuthorBatchUploadView(LoginRequiredMixin, FormView):
+    """Upload multiple authors from a JSON file."""
+
+    template_name = "libro/author_batch_upload.html"
+    form_class = AuthorBatchUploadForm
+    success_url = reverse_lazy("libro:author-list")
+
+    def form_valid(self, form):
+        json_file = form.cleaned_data["file"]
+
+        try:
+            data = json.load(json_file)
+            created_count = 0
+            skipped_count = 0
+
+            for author_data in data:
+                name = author_data.get("name")
+                if not name:
+                    continue
+
+                # Check if author already exists
+                if Author.objects.filter(name=name).exists():
+                    skipped_count += 1
+                    continue
+
+                # Create new author
+                author = Author(
+                    name=name,
+                    biography=author_data.get("biography", ""),
+                    birth_date=author_data.get("birth_date"),
+                    death_date=author_data.get("death_date"),
+                    created_by=self.request.user,
+                )
+
+                # Handle photo if provided as URL
+                photo_url = author_data.get("photo")
+                if photo_url:
+                    try:
+                        response = requests.get(photo_url)
+                        if response.status_code == 200:
+                            file_name = f"author_photos/{slugify(name)}.jpg"
+                            default_storage.save(
+                                file_name, ContentFile(response.content)
+                            )
+                            author.photo = file_name
+                    except:
+                        pass
+
+                author.save()
+                created_count += 1
+
+            messages.success(
+                self.request,
+                _(
+                    "Successfully created %(created)d authors. %(skipped)d duplicates skipped."
+                )
+                % {"created": created_count, "skipped": skipped_count},
+            )
+
+        except json.JSONDecodeError:
+            messages.error(self.request, _("Invalid JSON file format."))
+        except Exception as e:
+            messages.error(
+                self.request,
+                _("An error occurred while processing the file: %(error)s")
+                % {"error": str(e)},
+            )
+
+        return super().form_valid(form)
+
+
+class BookBatchUploadView(LoginRequiredMixin, FormView):
+    """Upload multiple books from a JSON file."""
+
+    template_name = "libro/book_batch_upload.html"
+    form_class = BookBatchUploadForm
+
+    def dispatch(self, request, *args, **kwargs):
+        self.author = get_object_or_404(Author, slug=self.kwargs["author_slug"])
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse("libro:author-books", kwargs={"author_slug": self.author.slug})
+
+    def form_valid(self, form):
+        json_file = form.cleaned_data["file"]
+
+        try:
+            data = json.load(json_file)
+            created_count = 0
+            skipped_count = 0
+
+            for book_data in data:
+                title = book_data.get("title")
+                if not title:
+                    continue
+
+                # Check if book already exists for this author
+                if Book.objects.filter(author=self.author, title=title).exists():
+                    skipped_count += 1
+                    continue
+
+                # Create new book
+                book = Book(
+                    title=title,
+                    description=book_data.get("description", ""),
+                    isbn=book_data.get("isbn", ""),
+                    publication_date=book_data.get("publication_date"),
+                    author=self.author,
+                    created_by=self.request.user,
+                )
+
+                # Handle cover image if provided as URL
+                cover_url = book_data.get("cover_image")
+                if cover_url:
+                    try:
+                        response = requests.get(cover_url)
+                        if response.status_code == 200:
+                            file_name = f"book_covers/{slugify(title)}.jpg"
+                            default_storage.save(
+                                file_name, ContentFile(response.content)
+                            )
+                            book.cover_image = file_name
+                    except:
+                        pass
+
+                book.save()
+                created_count += 1
+
+            messages.success(
+                self.request,
+                _(
+                    "Successfully created %(created)d books. %(skipped)d duplicates skipped."
+                )
+                % {"created": created_count, "skipped": skipped_count},
+            )
+
+        except json.JSONDecodeError:
+            messages.error(self.request, _("Invalid JSON file format."))
+        except Exception as e:
+            messages.error(
+                self.request,
+                _("An error occurred while processing the file: %(error)s")
+                % {"error": str(e)},
+            )
+
+        return super().form_valid(form)

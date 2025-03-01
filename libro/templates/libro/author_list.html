@@ -12,6 +12,9 @@
       </div>
       <div class="col-auto">
         <a href="{% url 'libro:author-create' %}" class="btn btn-primary btn-lg rounded-pill"><i class="bi bi-person-plus me-2"></i>{% translate 'Add Author' %}</a>
+        {% if user.is_staff %}
+          <a href="{% url 'libro:author-batch-upload' %}" class="btn btn-primary btn-lg rounded-pill"><i class="bi bi-person-plus me-2"></i>{% translate 'Import Authors' %}</a>
+        {% endif %}
       </div>
     </div>
 

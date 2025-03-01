@@ -1,0 +1,37 @@
+[
+    {
+        "name": "William Shakespeare",
+        "biography": "English playwright, poet and actor, often called England's national poet and the 'Bard of Avon'. His works consist of about 37 plays, 154 sonnets, and two long narrative poems.",
+        "birth_date": "1564-04-26",
+        "death_date": "1616-04-23",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Shakespeare.jpg"
+    },
+    {
+        "name": "Jane Austen",
+        "biography": "English novelist known primarily for her six major novels, which interpret, critique and comment upon the British landed gentry at the end of the 18th century.",
+        "birth_date": "1775-12-16",
+        "death_date": "1817-07-18",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/c/cc/CassandraAusten-JaneAusten%28c.1810%29_hires.jpg"
+    },
+    {
+        "name": "Leo Tolstoy",
+        "biography": "Russian writer who primarily wrote novels and short stories. Tolstoy is widely considered one of the greatest authors of all time.",
+        "birth_date": "1828-09-09",
+        "death_date": "1910-11-20",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg"
+    },
+    {
+        "name": "Virginia Woolf",
+        "biography": "English writer, considered one of the most important modernist 20th-century authors and also a pioneer in the use of stream of consciousness as a narrative device.",
+        "birth_date": "1882-01-25",
+        "death_date": "1941-03-28",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/0/0b/George_Charles_Beresford_-_Virginia_Woolf_in_1902_-_Restoration.jpg"
+    },
+    {
+        "name": "Gabriel García Márquez",
+        "biography": "Colombian novelist, short-story writer, screenwriter, and journalist, known affectionately as Gabo throughout Latin America.",
+        "birth_date": "1927-03-06",
+        "death_date": "2014-04-17",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Gabriel_Garcia_Marquez.jpg"
+    }
+]

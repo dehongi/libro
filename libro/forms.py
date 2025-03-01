@@ -2,6 +2,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from .models import Book, Review, Genre, Comment, Author
+from django.core.validators import FileExtensionValidator
 
 
 class BookForm(forms.ModelForm):
@@ -144,3 +145,19 @@ class AuthorForm(forms.ModelForm):
                 }
             ),
         }
+
+
+class AuthorBatchUploadForm(forms.Form):
+    file = forms.FileField(
+        label=_("JSON File"),
+        help_text=_("Upload a JSON file containing author information"),
+        validators=[FileExtensionValidator(allowed_extensions=["json"])],
+    )
+
+
+class BookBatchUploadForm(forms.Form):
+    file = forms.FileField(
+        label=_("JSON File"),
+        help_text=_("Upload a JSON file containing book information"),
+        validators=[FileExtensionValidator(allowed_extensions=["json"])],
+    )

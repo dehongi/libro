@@ -1,0 +1,38 @@
+{% extends 'libro/form_base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {% translate 'Batch Upload Books' %}
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">{% translate 'Batch Upload Books' %}</h3>
+      <p class="text-muted">
+        {% translate 'Upload a JSON file containing book information. The file should contain an array of book objects with the following structure:' %}
+      </p>
+      {# prettier-ignore-start #}
+      <pre>
+        <code>
+            [ 
+                { 
+                    "title": "Book Title", 
+                    "description": "Book description...", 
+                    "isbn": "1234567890123", 
+                    "publication_date": "YYYY-MM-DD", 
+                    "cover_image": "http://example.com/cover.jpg" 
+                } 
+            ]
+            </code>
+      </pre>
+      {# prettier-ignore-end #}
+
+      <form method="post" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary"><i class="bi bi-upload me-2"></i>{% translate 'Upload' %}</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

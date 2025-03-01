@@ -17,6 +17,8 @@ from .views import (
     delete_review,
     add_comment,
     delete_comment,
+    AuthorBatchUploadView,
+    BookBatchUploadView,
 )
 
 app_name = "libro"
@@ -25,6 +27,11 @@ urlpatterns = [
     path("", LibroHome.as_view(), name="home"),
     path("authors/", AuthorListView.as_view(), name="author-list"),
     path("authors/add/", AuthorCreateView.as_view(), name="author-create"),
+    path(
+        "authors/batch-upload/",
+        AuthorBatchUploadView.as_view(),
+        name="author-batch-upload",
+    ),
     path("authors/<slug:slug>/", AuthorDetailView.as_view(), name="author-detail"),
     path("authors/<slug:slug>/edit/", AuthorUpdateView.as_view(), name="author-update"),
     path(
@@ -40,6 +47,11 @@ urlpatterns = [
         "authors/<slug:author_slug>/books/add/",
         BookCreateView.as_view(),
         name="book-create",
+    ),
+    path(
+        "authors/<slug:author_slug>/books/batch-upload/",
+        BookBatchUploadView.as_view(),
+        name="book-batch-upload",
     ),
     path(
         "authors/<slug:author_slug>/books/<slug:slug>/",
