@@ -1,0 +1,709 @@
+[
+    {
+        "name": "William Shakespeare",
+        "biography": "English playwright, poet, and actor, often called England's national poet and the 'Bard of Avon'. His works consist of about 37 plays, 154 sonnets, and two long narrative poems.",
+        "birth_date": "1564-04-26",
+        "death_date": "1616-04-23",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Shakespeare.jpg"
+    },
+    {
+        "name": "Agatha Christie",
+        "biography": "English writer known for her detective novels featuring Hercule Poirot and Miss Marple. She is one of the best-selling authors in history.",
+        "birth_date": "1890-09-15",
+        "death_date": "1976-01-12",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/8/85/Agatha_Christie.png"
+    },
+    {
+        "name": "Barbara Cartland",
+        "biography": "British writer known for her romance novels. She wrote over 700 books and was one of the most prolific authors of the 20th century.",
+        "birth_date": "1901-07-09",
+        "death_date": "2000-05-21",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/8/83/Barbara_Cartland.png"
+    },
+    {
+        "name": "Danielle Steel",
+        "biography": "American novelist known for her romance novels, which have sold millions of copies worldwide.",
+        "birth_date": "1947-08-14",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/5/55/Danielle_Steel.jpg"
+    },
+    {
+        "name": "Harold Robbins",
+        "biography": "American novelist known for his best-selling fiction, often based on real-life events and glamorous lifestyles.",
+        "birth_date": "1916-05-21",
+        "death_date": "1997-10-14",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/7/7f/Harold_Robbins.png"
+    },
+    {
+        "name": "Georges Simenon",
+        "biography": "Belgian writer known for creating the detective character Jules Maigret. He wrote over 400 books.",
+        "birth_date": "1903-02-13",
+        "death_date": "1989-09-04",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Georges_Simenon_%281963%29.jpg"
+    },
+    {
+        "name": "J.K. Rowling",
+        "biography": "British author best known for the Harry Potter series, which has become one of the best-selling book series in history.",
+        "birth_date": "1965-07-31",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a3/J._K._Rowling_2010.jpg"
+    },
+    {
+        "name": "Enid Blyton",
+        "biography": "English children's writer known for series such as 'The Famous Five', 'The Secret Seven', and 'Noddy'.",
+        "birth_date": "1897-08-11",
+        "death_date": "1968-11-28",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Enid_Blyton.jpg"
+    },
+    {
+        "name": "Jackie Collins",
+        "biography": "British-American novelist best known for her steamy romance novels and books like 'Hollywood Wives'.",
+        "birth_date": "1937-10-04",
+        "death_date": "2015-09-19",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Jackie_Collins.jpg"
+    },
+    {
+        "name": "Sidney Sheldon",
+        "biography": "American writer of best-selling novels, TV scripts, and Broadway plays, known for thrillers like 'Master of the Game' and 'The Other Side of Midnight'.",
+        "birth_date": "1917-02-11",
+        "death_date": "2007-01-30",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/7/73/Sidney_Sheldon.png"
+    },
+    {
+        "name": "Gilbert Patten",
+        "biography": "American writer best known for creating the 'Frank Merriwell' dime novel series.",
+        "birth_date": "1866-10-25",
+        "death_date": "1945-01-16",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/2/26/Gilbert_Patten.jpg"
+    },
+    {
+        "name": "Dr. Seuss",
+        "biography": "American children's author, political cartoonist, and animator, famous for books like 'The Cat in the Hat' and 'Green Eggs and Ham'.",
+        "birth_date": "1904-03-02",
+        "death_date": "1991-09-24",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/47/Ted_Geisel_NYWTS_2_crop.jpg"
+    },
+    {
+        "name": "Akira Toriyama",
+        "biography": "Japanese manga artist known for creating 'Dragon Ball' and 'Dr. Slump'.",
+        "birth_date": "1955-04-05",
+        "death_date": "2024-03-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Akira_Toriyama_1982.jpg"
+    },
+    {
+        "name": "Leo Tolstoy",
+        "biography": "Russian writer who primarily wrote novels and short stories. Tolstoy is widely considered one of the greatest authors of all time.",
+        "birth_date": "1828-09-09",
+        "death_date": "1910-11-20",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg"
+    },
+    {
+        "name": "Corín Tellado",
+        "biography": "Spanish writer known for her romance novels, with over 4,000 books published.",
+        "birth_date": "1927-04-25",
+        "death_date": "2009-04-11",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Cor%C3%ADn_Tellado.jpg"
+    },
+    {
+        "name": "James Patterson",
+        "biography": "American author known for thriller and mystery novels, including the 'Alex Cross' and 'Women's Murder Club' series.",
+        "birth_date": "1947-03-22",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d8/James_Patterson_at_The_National_Book_Festival.jpg"
+    },
+    {
+        "name": "Dean Koontz",
+        "biography": "American author known for his suspense, thriller, and horror novels, including 'Odd Thomas' and 'Watchers'.",
+        "birth_date": "1945-07-09",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/3/32/Dean_Koontz.jpg"
+    },
+    {
+        "name": "Stephen King",
+        "biography": "American author of horror, supernatural fiction, suspense, and fantasy novels, known for 'The Shining', 'It', and 'Carrie'.",
+        "birth_date": "1947-09-21",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Stephen_King%2C_Comicon.jpg"
+    },
+    {
+        "name": "Horatio Alger",
+        "biography": "American writer best known for his young adult novels about poor boys achieving success through hard work and determination.",
+        "birth_date": "1832-01-13",
+        "death_date": "1899-07-18",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/5/50/Horatio_Alger_Jr_c1870.png"
+    },
+    {
+        "name": "Nora Roberts",
+        "biography": "American author of more than 225 romance novels, including 'The Bride Quartet' and 'The In Death' series under the pseudonym J.D. Robb.",
+        "birth_date": "1950-10-10",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/6/68/Nora_Roberts.jpg"
+    },
+    {
+        "name": "R. L. Stine",
+        "biography": "American novelist known for his children's horror series 'Goosebumps', as well as 'Fear Street'.",
+        "birth_date": "1943-10-08",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/9/90/RL_Stine_2008.jpg"
+    },
+    {
+        "name": "Alexander Pushkin",
+        "biography": "Russian poet, playwright, and novelist, considered the founder of modern Russian literature.",
+        "birth_date": "1799-06-06",
+        "death_date": "1837-02-10",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d4/AleksandrPushkin.jpg"
+    },
+    {
+        "name": "Paulo Coelho",
+        "biography": "Brazilian lyricist and novelist, best known for 'The Alchemist'.",
+        "birth_date": "1947-08-24",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/2/23/Paulo_Coelho_2014.jpg"
+    },
+    {
+        "name": "Jirō Akagawa",
+        "biography": "Japanese novelist known for his mystery and thriller novels, particularly the 'Calico Cat Holmes' series.",
+        "birth_date": "1948-02-29",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/ja/3/3d/Jiro_Akagawa.jpg"
+    },
+    {
+        "name": "Jeffrey Archer",
+        "biography": "British author and politician, best known for his novels and short stories, including 'Kane and Abel' and 'The Clifton Chronicles'.",
+        "birth_date": "1940-04-15",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Jeffrey_Archer.jpg"
+    },
+    {
+        "name": "Louis L'Amour",
+        "biography": "American novelist and short-story writer known for his Western fiction, including the 'Sackett' series.",
+        "birth_date": "1908-03-22",
+        "death_date": "1988-06-10",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Louis_L%27Amour.jpg"
+    },
+    {
+        "name": "René Goscinny",
+        "biography": "French comic book writer known for co-creating 'Astérix' and 'Lucky Luke'.",
+        "birth_date": "1926-08-14",
+        "death_date": "1977-11-05",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Ren%C3%A9_Goscinny.jpg"
+    },
+    {
+        "name": "Erle Stanley Gardner",
+        "biography": "American lawyer and author best known for creating the 'Perry Mason' detective series.",
+        "birth_date": "1889-07-17",
+        "death_date": "1970-03-11",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Erle_Stanley_Gardner_portrait.jpg"
+    },
+    {
+        "name": "Edgar Wallace",
+        "biography": "British writer and journalist known for his crime novels and creating 'King Kong'.",
+        "birth_date": "1875-04-01",
+        "death_date": "1932-02-10",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/49/Edgar_Wallace_c1932.jpg"
+    },
+    {
+        "name": "Janet Dailey",
+        "biography": "American author of romance novels, known for works such as 'The Calder Saga'.",
+        "birth_date": "1944-05-21",
+        "death_date": "2013-12-14",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/9/90/Janet_Dailey.jpg"
+    },
+    {
+        "name": "Jin Yong",
+        "biography": "Chinese novelist and journalist, best known for his wuxia (martial arts) novels such as 'The Legend of the Condor Heroes'.",
+        "birth_date": "1924-03-10",
+        "death_date": "2018-10-30",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Jin_Yong.jpg"
+    },
+    {
+        "name": "Robert Ludlum",
+        "biography": "American author known for his thriller novels, including 'The Bourne Identity' series.",
+        "birth_date": "1927-05-25",
+        "death_date": "2001-03-12",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/a/a2/Robert_Ludlum.jpg"
+    },
+    {
+        "name": "Osamu Tezuka",
+        "biography": "Japanese manga artist and animator, known as the 'God of Manga', creator of 'Astro Boy' and 'Black Jack'.",
+        "birth_date": "1928-11-03",
+        "death_date": "1989-02-09",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Osamu_Tezuka.jpg"
+    },
+    {
+        "name": "Frédéric Dard",
+        "biography": "French crime novelist, best known for the 'San-Antonio' series.",
+        "birth_date": "1921-06-29",
+        "death_date": "2000-06-06",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/5/5c/Fr%C3%A9d%C3%A9ric_Dard.jpg"
+    },
+    {
+        "name": "Stan and Jan Berenstain",
+        "biography": "American writers and illustrators known for creating 'The Berenstain Bears' children's book series.",
+        "birth_date": "1923-09-29",
+        "death_date": "2005-11-26",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/1/17/Stan_and_Jan_Berenstain.jpg"
+    },
+    {
+        "name": "Roald Dahl",
+        "biography": "British writer known for his children's books, including 'Charlie and the Chocolate Factory' and 'Matilda'.",
+        "birth_date": "1916-09-13",
+        "death_date": "1990-11-23",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Roald_Dahl.jpg"
+    },
+    {
+        "name": "Zane Grey",
+        "biography": "American author known for popularizing the Western genre with novels such as 'Riders of the Purple Sage'.",
+        "birth_date": "1872-01-31",
+        "death_date": "1939-10-23",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Zane_Grey.jpg"
+    },
+    {
+        "name": "Irving Wallace",
+        "biography": "American novelist and screenwriter, known for best-selling novels like 'The Word' and 'The Man'.",
+        "birth_date": "1916-03-19",
+        "death_date": "1990-06-29",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/d/d7/Irving_Wallace.jpg"
+    },
+    {
+        "name": "Masashi Kishimoto",
+        "biography": "Japanese manga artist, best known for creating 'Naruto'.",
+        "birth_date": "1974-11-08",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Masashi_Kishimoto_2013.jpg"
+    },
+    {
+        "name": "Gosho Aoyama",
+        "biography": "Japanese manga artist, best known as the creator of 'Detective Conan' (Case Closed).",
+        "birth_date": "1963-06-21",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/10/Gosho_Aoyama.jpg"
+    },
+    {
+        "name": "J. R. R. Tolkien",
+        "biography": "English writer, poet, and professor, best known for 'The Lord of the Rings' and 'The Hobbit'.",
+        "birth_date": "1892-01-03",
+        "death_date": "1973-09-02",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Tolkien_1916.jpg"
+    },
+    {
+        "name": "John Grisham",
+        "biography": "American author, best known for his legal thrillers such as 'The Firm' and 'A Time to Kill'.",
+        "birth_date": "1955-02-08",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/4f/John_Grisham_2009.jpg"
+    },
+    {
+        "name": "Karl May",
+        "biography": "German writer, famous for adventure novels set in the American Old West and the Middle East.",
+        "birth_date": "1842-02-25",
+        "death_date": "1912-03-30",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Karl_May_portrait.jpg"
+    },
+    {
+        "name": "Mickey Spillane",
+        "biography": "American crime novelist, known for creating the hard-boiled detective Mike Hammer.",
+        "birth_date": "1918-03-09",
+        "death_date": "2006-07-17",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Mickey_Spillane_%28c.1960%29.jpg"
+    },
+    {
+        "name": "C. S. Lewis",
+        "biography": "British writer and theologian, best known for 'The Chronicles of Narnia' series.",
+        "birth_date": "1898-11-29",
+        "death_date": "1963-11-22",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3d/C.s.lewis3.JPG"
+    },
+    {
+        "name": "Kyotaro Nishimura",
+        "biography": "Japanese novelist, famous for his detective and mystery fiction, particularly travel mysteries.",
+        "birth_date": "1930-09-06",
+        "death_date": "2022-03-03",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Kyotaro_Nishimura.jpg"
+    },
+    {
+        "name": "Mitsuru Adachi",
+        "biography": "Japanese manga artist, best known for sports manga like 'Touch' and 'Cross Game'.",
+        "birth_date": "1951-02-09",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/19/Mitsuru_Adachi.jpg"
+    },
+    {
+        "name": "Rumiko Takahashi",
+        "biography": "Japanese manga artist, best known for creating 'Inuyasha', 'Ranma ½', and 'Urusei Yatsura'.",
+        "birth_date": "1957-10-10",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/46/Rumiko_Takahashi.jpg"
+    },
+    {
+        "name": "Dan Brown",
+        "biography": "American author best known for his thriller novels, particularly 'The Da Vinci Code' and 'Angels & Demons'.",
+        "birth_date": "1964-06-22",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Dan_Brown_%282013%29.jpg"
+    },
+    {
+        "name": "Alistair MacLean",
+        "biography": "Scottish novelist known for adventure and thriller novels like 'The Guns of Navarone' and 'Where Eagles Dare'.",
+        "birth_date": "1922-04-21",
+        "death_date": "1987-02-02",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/3/3a/Alistair_MacLean.jpg"
+    },
+    {
+        "name": "Ann M. Martin",
+        "biography": "American children's author best known for 'The Baby-Sitters Club' series.",
+        "birth_date": "1955-08-12",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ann_M._Martin.png"
+    },
+    {
+        "name": "Ryōtarō Shiba",
+        "biography": "Japanese author known for historical novels like 'Clouds Above the Hill' and 'The Last Shogun'.",
+        "birth_date": "1923-08-22",
+        "death_date": "1996-02-12",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Ryotaro_Shiba.jpg"
+    },
+    {
+        "name": "Arthur Hailey",
+        "biography": "British-Canadian novelist known for bestsellers like 'Airport', 'Hotel', and 'Wheels'.",
+        "birth_date": "1920-04-05",
+        "death_date": "2004-11-24",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/2/2f/Arthur_Hailey.jpg"
+    },
+    {
+        "name": "Astrid Lindgren",
+        "biography": "Swedish author of children's literature, best known for creating 'Pippi Longstocking'.",
+        "birth_date": "1907-11-14",
+        "death_date": "2002-01-28",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Astrid_Lindgren_%281968%29.jpg"
+    },
+    {
+        "name": "Koyoharu Gotouge",
+        "biography": "Japanese manga artist, best known for creating 'Demon Slayer: Kimetsu no Yaiba'.",
+        "birth_date": "1989-05-05",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Koyoharu_Gotouge.png"
+    },
+    {
+        "name": "Anne Rice",
+        "biography": "American author best known for her gothic fiction, particularly 'The Vampire Chronicles' series, which includes 'Interview with the Vampire'.",
+        "birth_date": "1941-10-04",
+        "death_date": "2021-12-11",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Anne_Rice_2006.jpg"
+    },
+    {
+        "name": "Gérard de Villiers",
+        "biography": "French writer and journalist, best known for the 'SAS' spy novel series.",
+        "birth_date": "1929-12-08",
+        "death_date": "2013-10-31",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/1c/G%C3%A9rard_de_Villiers.jpg"
+    },
+    {
+        "name": "Beatrix Potter",
+        "biography": "English writer, illustrator, and conservationist, best known for 'The Tale of Peter Rabbit' and other children's books featuring animal characters.",
+        "birth_date": "1866-07-28",
+        "death_date": "1943-12-22",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Beatrix_Potter.jpg"
+    },
+    {
+        "name": "Michael Crichton",
+        "biography": "American author, filmmaker, and physician, known for science fiction and techno-thriller novels such as 'Jurassic Park' and 'The Andromeda Strain'.",
+        "birth_date": "1942-10-23",
+        "death_date": "2008-11-04",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/41/MichaelCrichton.png"
+    },
+    {
+        "name": "Richard Scarry",
+        "biography": "American children's author and illustrator, known for his books about anthropomorphic animals, such as 'Busytown'.",
+        "birth_date": "1919-06-05",
+        "death_date": "1994-04-30",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/3/36/Richard_Scarry.jpg"
+    },
+    {
+        "name": "Clive Cussler",
+        "biography": "American adventure novelist and underwater explorer, best known for his 'Dirk Pitt' novels.",
+        "birth_date": "1931-07-15",
+        "death_date": "2020-02-24",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/7/79/Clive_Cussler.jpg"
+    },
+    {
+        "name": "Ken Follett",
+        "biography": "British author of thrillers and historical novels, known for 'The Pillars of the Earth' and 'Eye of the Needle'.",
+        "birth_date": "1949-06-05",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ken_Follett.jpg"
+    },
+    {
+        "name": "Debbie Macomber",
+        "biography": "American author of romance novels and contemporary women's fiction, known for the 'Cedar Cove' and 'Blossom Street' series.",
+        "birth_date": "1948-10-22",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/2/26/Debbie_Macomber.jpg"
+    },
+    {
+        "name": "Naoki Urasawa",
+        "biography": "Japanese manga artist known for psychological thrillers such as 'Monster', '20th Century Boys', and 'Pluto'.",
+        "birth_date": "1960-01-02",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Naoki_Urasawa_at_Angoul%C3%AAme_2012.jpg"
+    },
+    {
+        "name": "E. L. James",
+        "biography": "British author best known for the 'Fifty Shades' trilogy, which became a worldwide bestseller in the romance and erotica genres.",
+        "birth_date": "1963-03-07",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/9/99/E_L_James_2012.jpg"
+    },
+    {
+        "name": "Carter Brown",
+        "biography": "Australian writer of crime fiction and detective novels, known for his fast-paced, pulp-style thrillers.",
+        "birth_date": "1923-08-01",
+        "death_date": "1985-05-05",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/e/e5/CarterBrown.jpg"
+    },
+    {
+        "name": "Tite Kubo",
+        "biography": "Japanese manga artist best known for creating the popular 'Bleach' series, which became a major hit in both manga and anime formats.",
+        "birth_date": "1977-06-26",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Tite_Kubo_at_Jump_Festa_2013_%28cropped%29.jpg"
+    },
+    {
+        "name": "Eiji Yoshikawa",
+        "biography": "Japanese historical novelist known for works such as 'Musashi', a fictionalized account of the life of samurai Miyamoto Musashi.",
+        "birth_date": "1892-08-11",
+        "death_date": "1962-09-07",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b2/YoshikawaEiji.jpg"
+    },
+    {
+        "name": "Hajime Isayama",
+        "biography": "Japanese manga artist famous for 'Attack on Titan', one of the best-selling manga series of all time.",
+        "birth_date": "1986-08-29",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Hajime_Isayama_2018.jpg"
+    },
+    {
+        "name": "Catherine Cookson",
+        "biography": "British author of historical and romance novels, many of which were set in North East England.",
+        "birth_date": "1906-06-27",
+        "death_date": "1998-06-11",
+        "photo": "https://upload.wikimedia.org/wikipedia/en/8/84/Catherine_Cookson.jpg"
+    },
+    {
+        "name": "Stephenie Meyer",
+        "biography": "American author best known for the 'Twilight' series, which became a global phenomenon in the young adult and fantasy genres.",
+        "birth_date": "1973-12-24",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/6/61/Stephenie_Meyer_Booksigning.jpg"
+    },
+    {
+        "name": "Norman Bridwell",
+        "biography": "American author and illustrator, best known for creating the 'Clifford the Big Red Dog' series, which has become a popular children's book series.",
+        "birth_date": "1928-02-15",
+        "death_date": "2014-12-12",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/18/Norman_Bridwell_2010.jpg"
+    },
+    {
+        "name": "David Baldacci",
+        "biography": "American novelist known for his best-selling thrillers and crime novels, including the 'Amos Decker' and 'John Puller' series.",
+        "birth_date": "1960-08-05",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6e/David_Baldacci_at_Nebraska_Book_Festival_2011.jpg"
+    },
+    {
+        "name": "Nicholas Sparks",
+        "biography": "American novelist and screenwriter, best known for his romance novels such as 'The Notebook', which have been adapted into popular films.",
+        "birth_date": "1965-12-31",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Nicholas_Sparks_2011.jpg"
+    },
+    {
+        "name": "Hirohiko Araki",
+        "biography": "Japanese manga artist, best known for creating the long-running manga series 'JoJo's Bizarre Adventure', known for its unique art style and intricate plot.",
+        "birth_date": "1960-06-07",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/2/27/Hirohiko_Araki_2017.jpg"
+    },
+    {
+        "name": "Tom Clancy",
+        "biography": "American novelist known for his military-themed thrillers, including the 'Jack Ryan' series, which became iconic in the spy fiction genre.",
+        "birth_date": "1947-04-12",
+        "death_date": "2013-10-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/16/Tom_Clancy_2011.jpg"
+    },
+    {
+        "name": "Andrew Neiderman",
+        "biography": "American author best known for writing books in the horror and thriller genres, including the popular 'V.C. Andrews' series.",
+        "birth_date": "1944-10-26",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/9/95/Andrew_Neiderman.jpg"
+    },
+    {
+        "name": "Evan Hunter",
+        "biography": "American writer known for his detective fiction and the creation of the '87th Precinct' series under the pen name Ed McBain.",
+        "birth_date": "1926-10-15",
+        "death_date": "2005-07-06",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/0/01/Evan_Hunter.jpg"
+    },
+    {
+        "name": "Roger Hargreaves",
+        "biography": "English author and illustrator, best known for the 'Mr. Men' and 'Little Miss' series of children's books, which have become a beloved cultural phenomenon.",
+        "birth_date": "1935-05-09",
+        "death_date": "1988-09-11",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/0/07/Roger_Hargreaves.jpg"
+    },
+    {
+        "name": "Robin Cook",
+        "biography": "American author of medical thrillers, best known for his books such as 'Coma' and 'Outbreak', which often explore the darker side of medicine.",
+        "birth_date": "1940-05-04",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/16/Robin_Cook.jpg"
+    },
+    {
+        "name": "Wilbur Smith",
+        "biography": "South African novelist, best known for his historical fiction set in Africa, particularly the 'Courtney' and 'Ballantyne' series.",
+        "birth_date": "1933-01-09",
+        "death_date": "2021-11-13",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Wilbur_Smith_2013.jpg"
+    },
+    {
+        "name": "Erskine Caldwell",
+        "biography": "American author known for his portrayal of the American South during the Great Depression, with works like 'Tobacco Road' and 'God's Little Acre'.",
+        "birth_date": "1903-12-17",
+        "death_date": "1987-04-11",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Erskine_Caldwell_1950.jpg"
+    },
+    {
+        "name": "Judith Krantz",
+        "biography": "American novelist, best known for her glamorous novels about the lives of the rich and famous, including 'Scruples' and 'Princess Daisy'.",
+        "birth_date": "1928-01-09",
+        "death_date": "2019-06-22",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/47/Judith_Krantz_1986.jpg"
+    },
+    {
+        "name": "Eleanor Hibbert",
+        "biography": "British author, known for writing historical fiction under her real name and several pseudonyms, including 'Jean Plaidy' and 'Victoria Holt'.",
+        "birth_date": "1906-09-01",
+        "death_date": "1993-01-18",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Jean_Plaidy_%28author%29.jpg"
+    },
+    {
+        "name": "Lewis Carroll",
+        "biography": "English author, best known for his literary works 'Alice's Adventures in Wonderland' and 'Through the Looking-Glass', as well as his poetry.",
+        "birth_date": "1832-01-27",
+        "death_date": "1898-01-14",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/47/Lewis_Carroll_circa_1855.jpg"
+    },
+    {
+        "name": "Denise Robins",
+        "biography": "English author of romance novels, known for her popular works like 'The Forbidden Bride' and 'The House on the Hill'.",
+        "birth_date": "1897-06-14",
+        "death_date": "1985-07-06",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Denise_Robins.jpg"
+    },
+    {
+        "name": "Cao Xueqin",
+        "biography": "Chinese author, best known for writing the classic Chinese novel 'Dream of the Red Chamber', one of China's Four Great Classical Novels.",
+        "birth_date": "1715-01-01",
+        "death_date": "1763-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Cao_Xueqin.jpg"
+    },
+    {
+        "name": "Ian Fleming",
+        "biography": "English author best known for creating the James Bond series of spy novels, which have been adapted into films and become cultural icons.",
+        "birth_date": "1908-05-28",
+        "death_date": "1964-08-12",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/3/32/Ian_Fleming_1958.jpg"
+    },
+    {
+        "name": "Hermann Hesse",
+        "biography": "German-Swiss author and poet, best known for his works 'Steppenwolf', 'Siddhartha', and 'The Glass Bead Game', exploring themes of self-exploration and spirituality.",
+        "birth_date": "1877-07-02",
+        "death_date": "1962-08-09",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/2/27/Hermann_Hesse_1912.jpg"
+    },
+    {
+        "name": "Rex Stout",
+        "biography": "American author best known for creating the fictional detective Nero Wolfe, whose stories have been adapted into radio, television, and films.",
+        "birth_date": "1886-12-01",
+        "death_date": "1975-10-27",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Rex_Stout_1947.jpg"
+    },
+    {
+        "name": "Anne Golon",
+        "biography": "French author best known for creating the historical adventure novel series 'Angélique', which explores the life of a young woman during the reign of Louis XIV.",
+        "birth_date": "1921-12-17",
+        "death_date": "2017-06-14",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Anne_Golon.jpg"
+    },
+    {
+        "name": "Frank G. Slaughter",
+        "biography": "American author of medical fiction and historical novels, best known for his works like 'Code Blue' and 'The Doctor's Dilemma'.",
+        "birth_date": "1908-01-01",
+        "death_date": "2001-06-15",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Frank_G_Slaughter.jpg"
+    },
+    {
+        "name": "Edgar Rice Burroughs",
+        "biography": "American author best known for creating the Tarzan series and the Barsoom series, which are among the earliest and most influential works of science fiction and adventure.",
+        "birth_date": "1875-09-01",
+        "death_date": "1950-03-19",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/18/Edgar_Rice_Burroughs_1916.jpg"
+    },
+    {
+        "name": "John Creasey",
+        "biography": "English author, best known for his crime and mystery novels, especially the 'Gideon' series and the 'Toff' series.",
+        "birth_date": "1908-09-17",
+        "death_date": "1973-06-09",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/4/43/John_Creasey_1965.jpg"
+    },
+    {
+        "name": "James A. Michener",
+        "biography": "American author of historical fiction, with notable works like 'Tales of the South Pacific' and 'Hawaii', which explore the history and culture of various regions.",
+        "birth_date": "1907-02-03",
+        "death_date": "1997-10-16",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/0/06/James_A._Michener.jpg"
+    },
+    {
+        "name": "Yasuo Uchida",
+        "biography": "Japanese author known for his contributions to detective fiction and mystery novels.",
+        "birth_date": "1948-01-01",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Yasuo_Uchida_1984.jpg"
+    },
+    {
+        "name": "Seiichi Morimura",
+        "biography": "Japanese author of mystery novels, best known for his psychological thrillers and suspense fiction.",
+        "birth_date": "1953-02-15",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Seiichi_Morimura.jpg"
+    },
+    {
+        "name": "Mary Higgins Clark",
+        "biography": "American author of suspense novels, often referred to as the 'Queen of Suspense'. Her books have sold over 100 million copies worldwide.",
+        "birth_date": "1927-12-24",
+        "death_date": "2020-01-31",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Mary_Higgins_Clark_2012.jpg"
+    },
+    {
+        "name": "Penny Jordan",
+        "biography": "British author known for her romantic novels and contributing to Mills & Boon publications. She wrote more than 200 novels during her career.",
+        "birth_date": "1946-05-24",
+        "death_date": "2011-12-31",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Penny_Jordan.jpg"
+    },
+    {
+        "name": "Patricia Cornwell",
+        "biography": "American crime writer known for her series featuring medical examiner Dr. Kay Scarpetta, blending forensic science with gripping mysteries.",
+        "birth_date": "1956-06-09",
+        "death_date": "2025-01-01",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/2/29/Patricia_Cornwell_2013.jpg"
+    },
+    {
+        "name": "Terry Pratchett",
+        "biography": "English author best known for his Discworld series, a satirical fantasy series that explores the human condition with humor and wit.",
+        "birth_date": "1948-04-28",
+        "death_date": "2015-03-12",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Terry_Pratchett_2007.jpg"
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "title": "The Mysterious Affair at Styles",
+        "description": "The first novel featuring Hercule Poirot, where he solves a murder in an English country house.",
+        "isbn": "978-0-451-21948-4",
+        "publication_date": "1920-01-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/The_Mysterious_Affair_at_Styles.jpg/800px-The_Mysterious_Affair_at_Styles.jpg"
+    },
+    {
+        "title": "The Murder on the Links",
+        "description": "Hercule Poirot investigates a murder on a French golf course.",
+        "isbn": "978-0-451-21949-1",
+        "publication_date": "1923-02-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/The_Murder_on_the_Links.jpg/800px-The_Murder_on_the_Links.jpg"
+    },
+    {
+        "title": "The Murder of Roger Ackroyd",
+        "description": "Considered one of Christie's best works, it features a surprising twist in the identity of the murderer.",
+        "isbn": "978-0-451-21950-7",
+        "publication_date": "1926-06-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/The_Murder_of_Roger_Ackroyd.jpg/800px-The_Murder_of_Roger_Ackroyd.jpg"
+    },
+    {
+        "title": "Murder on the Orient Express",
+        "description": "A classic whodunit where Poirot solves a murder on a luxurious train.",
+        "isbn": "978-0-451-21951-4",
+        "publication_date": "1934-01-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/Murder_on_the_Orient_Express.jpg/800px-Murder_on_the_Orient_Express.jpg"
+    },
+    {
+        "title": "And Then There Were None",
+        "description": "Ten strangers are invited to an isolated island, only to be killed off one by one.",
+        "isbn": "978-0-451-21952-1",
+        "publication_date": "1939-11-06",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/And_Then_There_Were_None.jpg/800px-And_Then_There_Were_None.jpg"
+    },
+    {
+        "title": "The Body in the Library",
+        "description": "Miss Marple investigates the discovery of a young woman's body in a library.",
+        "isbn": "978-0-451-21953-8",
+        "publication_date": "1942-02-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/The_Body_in_the_Library.jpg/800px-The_Body_in_the_Library.jpg"
+    },
+    {
+        "title": "A Murder is Announced",
+        "description": "Miss Marple solves a murder that was announced in advance.",
+        "isbn": "978-0-451-21954-5",
+        "publication_date": "1950-06-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/A_Murder_is_Announced.jpg/800px-A_Murder_is_Announced.jpg"
+    },
+    {
+        "title": "4:50 From Paddington",
+        "description": "Miss Marple investigates a murder witnessed from a train.",
+        "isbn": "978-0-451-21955-2",
+        "publication_date": "1957-11-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/4.50_From_Paddington.jpg/800px-4.50_From_Paddington.jpg"
+    },
+    {
+        "title": "The Mirror Crack'd from Side to Side",
+        "description": "Miss Marple investigates a murder at a film star's home.",
+        "isbn": "978-0-451-21956-9",
+        "publication_date": "1962-11-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/The_Mirror_Crack%27d_from_Side_to_Side.jpg/800px-The_Mirror_Crack%27d_from_Side_to_Side.jpg"
+    },
+    {
+        "title": "Nemesis",
+        "description": "Miss Marple's final case, where she investigates a mysterious death.",
+        "isbn": "978-0-451-21957-6",
+        "publication_date": "1971-11-01",
+        "cover_image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Nemesis.jpg/800px-Nemesis.jpg"
+    }
+]

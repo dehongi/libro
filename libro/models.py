@@ -9,7 +9,7 @@ User = settings.AUTH_USER_MODEL
 
 
 class Author(models.Model):
-    """Model representing a book author. """
+    """Model representing a book author."""
 
     name = models.CharField(_("name"), max_length=55)
     slug = models.SlugField(_("slug"), max_length=55, unique=True)
@@ -77,7 +77,7 @@ class Book(models.Model):
     cover_image = models.ImageField(
         _("cover image"), upload_to="book_covers/", blank=True
     )
-    isbn = models.CharField(_("ISBN"), max_length=13, unique=True)
+    isbn = models.CharField(_("ISBN"), max_length=20, unique=True)
     publication_date = models.DateField(_("publication date"))
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)
