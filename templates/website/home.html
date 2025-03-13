@@ -8,85 +8,173 @@
 
 {% block content %}
   <!-- Hero Section -->
-  <div class="px-4 py-5 my-5 text-center bg-light rounded-3">
-    <h1 class="display-3 fw-bold text-body-emphasis mb-3">{{ title }}</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead text-body-secondary mb-4">Discover your next great read with Libro – your digital companion for exploring books, sharing reviews, and connecting with fellow readers.</p>
-      <div class="d-grid gap-3 d-sm-flex justify-content-sm-center mb-5">
-        <a href="{% url 'libro:book-list' %}" class="btn btn-primary btn-lg px-5 rounded-pill"><i class="bi bi-book me-2"></i>Browse Books</a>
-        <a href="{% url 'signup' %}" class="btn btn-outline-primary btn-lg px-5 rounded-pill"><i class="bi bi-person-plus me-2"></i>Join Now</a>
+  <div class="px-4 py-5 my-5 text-center position-relative overflow-hidden">
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10 z-n1"></div>
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-lg-start mb-5 mb-lg-0">
+          <h1 class="display-3 fw-bold text-primary mb-4">{{ title }}</h1>
+          <p class="lead mb-4 fs-4">Discover your next great read with Libro – your digital companion for exploring books, sharing reviews, and connecting with fellow readers.</p>
+          <div class="d-grid gap-3 d-sm-flex justify-content-lg-start justify-content-center">
+            <a href="{% url 'libro:book-list' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow-sm"><i class="bi bi-book me-2"></i>{% translate 'Browse Books' %}</a>
+            <a href="{% url 'signup' %}" class="btn btn-outline-primary btn-lg px-5 rounded-pill"><i class="bi bi-person-plus me-2"></i>{% translate 'Join Now' %}</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="{% static 'images/libro_homepage.jpg' %}" alt="Libro homepage image" class="img-fluid rounded-4 shadow-lg" />
+        </div>
       </div>
-    </div>
-    <div class="col-lg-8 mx-auto">
-      <img src="{% static 'images/libro_homepage.jpg' %}" alt="Libro homepage image" class="img-fluid rounded shadow-lg" />
     </div>
   </div>
 
   <!-- Features Section -->
   <div class="container px-4 py-5">
-    <h2 class="pb-2 border-bottom text-center mb-5">Why Choose Libro?</h2>
-    <div class="row g-4 py-4 row-cols-1 row-cols-lg-3">
-      <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 rounded p-3">
-          <i class="bi bi-search"></i>
-        </div>
-        <div>
-          <h3 class="fs-2">Discover</h3>
-          <p>Find your next favorite book from our extensive collection of carefully curated titles.</p>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 rounded p-3">
-          <i class="bi bi-people"></i>
-        </div>
-        <div>
-          <h3 class="fs-2">Connect</h3>
-          <p>Join a community of passionate readers who share your love for literature.</p>
+    <h2 class="display-5 fw-bold text-center mb-5">{% translate 'Why Choose Libro?' %}</h2>
+    <div class="row g-5 py-4 row-cols-1 row-cols-md-3">
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm hover-card">
+          <div class="card-body p-4 text-center">
+            <div class="icon-square text-primary bg-primary-subtle d-inline-flex align-items-center justify-content-center fs-1 p-3 rounded-circle mb-4">
+              <i class="bi bi-search"></i>
+            </div>
+            <h3 class="fs-2 mb-3">{% translate 'Discover' %}</h3>
+            <p class="text-muted">
+              {% translate 'Find your next favorite book from our extensive collection of carefully curated titles.' %}
+            </p>
+          </div>
         </div>
       </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 rounded p-3">
-          <i class="bi bi-star"></i>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm hover-card">
+          <div class="card-body p-4 text-center">
+            <div class="icon-square text-primary bg-primary-subtle d-inline-flex align-items-center justify-content-center fs-1 p-3 rounded-circle mb-4">
+              <i class="bi bi-people"></i>
+            </div>
+            <h3 class="fs-2 mb-3">{% translate 'Connect' %}</h3>
+            <p class="text-muted">
+              {% translate 'Join a community of passionate readers who share your love for literature.' %}
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 class="fs-2">Review</h3>
-          <p>Share your thoughts and read authentic reviews from fellow book lovers.</p>
+      </div>
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm hover-card">
+          <div class="card-body p-4 text-center">
+            <div class="icon-square text-primary bg-primary-subtle d-inline-flex align-items-center justify-content-center fs-1 p-3 rounded-circle mb-4">
+              <i class="bi bi-star"></i>
+            </div>
+            <h3 class="fs-2 mb-3">{% translate 'Review' %}</h3>
+            <p class="text-muted">
+              {% translate 'Share your thoughts and read authentic reviews from fellow book lovers.' %}
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Latest Books Section -->
+  <div class="container px-4 py-5">
+    <div class="row mb-4 align-items-center">
+      <div class="col">
+        <h2 class="display-6 fw-bold">{% translate 'Latest Additions' %}</h2>
+      </div>
+      <div class="col-auto">
+        <a href="{% url 'libro:book-list' %}" class="btn btn-outline-primary rounded-pill">{% translate 'View All' %} <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for book in latest_books|slice:':3' %}
+        <div class="col">
+          <div class="card h-100 shadow-sm hover-card">
+            {% if book.cover_image %}
+              <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}" style="height: 400px; object-fit: cover;" />
+            {% else %}
+              <img src="{% static 'libro/images/default-book-cover.jpg' %}" class="card-img-top" alt="{{ book.title }}" style="height: 400px; object-fit: cover;" />
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title fw-bold">{{ book.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">by {{ book.author.name }}</h6>
+              <p class="card-text text-muted">{{ book.description|truncatewords:20 }}</p>
+              <a href="{{ book.get_absolute_url }}" class="btn btn-sm btn-primary rounded-pill"><i class="bi bi-eye me-1"></i> {% translate 'View Details' %}</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12 text-center py-5">
+          <p class="lead text-muted">
+            {% translate 'No books available yet.' %}
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
   <!-- Stats Section -->
-  <div class="container px-4 py-5 bg-light rounded-3">
-    <div class="row text-center">
-      <div class="col-md-4 mb-4 mb-md-0">
-        <h2 class="display-4 fw-bold text-primary">10K+</h2>
-        <p class="text-muted">Books Available</p>
-      </div>
-      <div class="col-md-4 mb-4 mb-md-0">
-        <h2 class="display-4 fw-bold text-primary">5K+</h2>
-        <p class="text-muted">Active Readers</p>
-      </div>
-      <div class="col-md-4">
-        <h2 class="display-4 fw-bold text-primary">20K+</h2>
-        <p class="text-muted">Reviews Written</p>
+  <div class="container px-4 py-5">
+    <div class="card border-0 bg-primary text-white shadow rounded-4">
+      <div class="card-body p-5">
+        <div class="row text-center g-4">
+          <div class="col-md-4">
+            <div class="p-3">
+              <h2 class="display-4 fw-bold">10K+</h2>
+              <p class="fs-5 opacity-75">
+                {% translate 'Books Available' %}
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3">
+              <h2 class="display-4 fw-bold">5K+</h2>
+              <p class="fs-5 opacity-75">
+                {% translate 'Active Readers' %}
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3">
+              <h2 class="display-4 fw-bold">20K+</h2>
+              <p class="fs-5 opacity-75">
+                {% translate 'Reviews Written' %}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- CTA Section -->
   <div class="container px-4 py-5 text-center">
-    <h2 class="display-5 fw-bold text-body-emphasis mb-4">Ready to start your reading journey?</h2>
-    <div class="col-lg-6 mx-auto">
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        {% if not user.is_authenticated %}
-          <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-4 gap-3"><i class="bi bi-person-plus me-2"></i>Create Free Account</a>
-          <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg px-4 gap-3"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a>
-        {% else %}
-          <a href="{% url 'libro:book-list' %}" class="btn btn-primary btn-lg px-4 gap-3"><i class="bi bi-book me-2"></i>Browse Books</a>
-          <a href="{% url 'profile' %}" class="btn btn-outline-primary btn-lg px-4 gap-3"><i class="bi bi-person me-2"></i>View Profile</a>
-        {% endif %}
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="display-5 fw-bold text-primary mb-4">{% translate 'Ready to start your reading journey?' %}</h2>
+        <p class="lead mb-5">
+          {% translate 'Join thousands of readers who have already discovered their next favorite book with Libro.' %}
+        </p>
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+          {% if not user.is_authenticated %}
+            <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow-sm"><i class="bi bi-person-plus me-2"></i>{% translate 'Create Free Account' %}</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg px-5 rounded-pill"><i class="bi bi-box-arrow-in-right me-2"></i>{% translate 'Login' %}</a>
+          {% else %}
+            <a href="{% url 'libro:book-list' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow-sm"><i class="bi bi-book me-2"></i>{% translate 'Browse Books' %}</a>
+            <a href="{% url 'profile' %}" class="btn btn-outline-primary btn-lg px-5 rounded-pill"><i class="bi bi-person me-2"></i>{% translate 'View Profile' %}</a>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
+
+  <style>
+    .hover-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+    .bg-primary-subtle {
+      background-color: rgba(var(--bs-primary-rgb), 0.1);
+    }
+  </style>
 {% endblock %}

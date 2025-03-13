@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils.translation import gettext_lazy as _
 
+from libro.models import Book
+
 # Create your views here.
 
 
@@ -12,6 +14,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["latest_books"] = Book.objects.all().order_by("-created_at")[:3]
         context["title"] = _("Welcome to Libro")
         return context
 
